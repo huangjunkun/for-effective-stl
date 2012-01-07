@@ -1,0 +1,457 @@
+/*
+// 泛型 （STL --算法） 与多态的结合 -----  mem_fun(...)
+    
+    cout << "---- Test 泛型 （STL --算法） 与多态的结合 -----mem_fun(...)" << endl ;
+    using namespace MySpace ;
+    vector<Shape*>  ShapeVec ;
+    #pragma warn    - 8030   Turn off the warning message for warning #8030
+    ShapeVec.push_back(new MySpace::Rect) ;
+    ShapeVec.push_back(new Circle) ;
+    ShapeVec.push_back(new Square) ;
+    ShapeVec.push_back(new Circle) ;
+    ShapeVec.push_back(new MySpace::Rect) ;
+    #pragma warn    + 8030   Turn on the warning message for warning #8030  
+
+    cout << "------ (ShapeVec[i])->display() ; ------" << endl ;
+    for(unsigned i=0 ;i<ShapeVec.size() ;i++)
+        (ShapeVec[i])->display() ;    
+    cout << "------ mem_fun(Shape::display) ------" << endl ;
+    for_each(ShapeVec.begin() ,ShapeVec.end() ,mem_fun(Shape::display)) ;
+    //------  配接器 应用于仿函数  -- functor adapters (.... ) ，
+    ostream_iterator<int>   outite(cout ," ") ;
+    int     ia[6] = { 0 ,1 ,2 ,3 ,4 ,5 } ;
+    vector<int> iv(ia ,ia+6) ;
+    cout << "copy(iv.begin() ,iv.end() ,outite) ;" <<endl ;
+    copy(iv.begin() ,iv.end() ,outite) ; // print iv 11111111111
+    cout << endl ;   
+    cout << "count_if(iv.begin() ,iv.end() ,not1(bind2nd(less<int>() ,2))) ;" <<endl ;
+    cout << count_if(iv.begin() ,iv.end() ,not1(bind2nd(less<int>() ,2))) ;
+    cout << endl ;  
+    cout << "transform(...) compose1(bind2nd(...) ,bind2nd(...)) ...iv : (v+2)*3 " <<endl ;
+    transform(iv.begin() ,iv.end() ,outite ,compose1(bind2nd(multiplies<int>() ,3) ,
+                                                     bind2nd(plus<int>() ,2) )) ;
+    cout << endl ; 
+    cout << "for_each(iv.begin() ,iv.end() ,print) ;" <<endl ;
+    for_each(iv.begin() ,iv.end() ,print) ; // print iv 22222222222
+    cout << endl ;
+    cout << "for_each(iv.begin() ,iv.end() ,ptr_fun(print)) ;" <<endl ;
+    for_each(iv.begin() ,iv.end() ,ptr_fun(print)) ;// print iv 3333333333
+    cout << endl ;
+
+    Int     I1(11) ,I2(22) ,I3(33) ,I4(44) ,I5(55) ,I6(66)  ;
+    vector<Int> IntVec ;
+    IntVec.push_back(I1) ;   
+    IntVec.push_back(I2) ;
+    IntVec.push_back(I3) ;
+    IntVec.push_back(I4) ;
+    IntVec.push_back(I5) ;
+    IntVec.push_back(I6) ; 
+    cout << "for_each(IntVec.begin() ,IntVec.end() ,mem_fun_ref(&Int::Print) ) ;" <<endl ;
+    for_each(IntVec.begin() ,IntVec.end() ,mem_fun_ref(&Int::Print) ) ;
+    cout << endl ;
+    //for_each(IntVec.begin() ,IntVec.end() ,mem_fun_ref(&Int::Print_) ) ; // erro --- 不符合for_each 接口需求
+    cout << "for(...) mem_fun_ref(&Int::PrintArg)(IntVec[i] ,1) ;" <<endl ;
+    for(unsigned i=0 ;i<IntVec.size() ;i++)
+        mem_fun_ref(&Int::PrintArg)(IntVec[i] ,1) ;
+    cout << endl ;
+
+
+/* // 配接器 应用于仿函数  -- functor adapters (.... ) ，
+    cout << "---- Test 配接器 应用于仿函数  -- functor adapters (.... ) ，" << endl ;
+    ostream_iterator<int>    outite(cout ," ") ;
+    int ia[] ={ 2 ,21 ,12 ,7 ,19 ,23} ;
+    vector <int>    iv(ia ,ia+6) ;
+    // 欲于每个元素身上执行(v+2)*3
+    //注意 ，for_each是 nonmatutating algorithm ，元素的值不能改变
+    //所以执行之后iv 内容不变
+    
+    cout << "iv : " ;
+    for_each(iv.begin() ,iv.end() ,compose1(bind2nd(multiplies<int>() ,3) ,
+                                            bind2nd(plus<int>() ,2) )) ;
+    copy(iv.begin() ,iv.end() ,outite) ;
+    cout << endl ;
+    cout << "(v+2)*3 ,iv : " ;
+    // transform(...)
+    transform(iv.begin() ,iv.end() ,outite ,
+              compose1(bind2nd(multiplies<int>() ,3) ,
+                       bind2nd(plus<int>() ,2) )) ;
+    cout << endl ;
+/*  // 配接器 应用于 容器 -- container adapters (deque ,stack ) ，
+    // 迭代器 --iterator adapters (Insert ,Reverse ,IOStream Iterators )
+    cout << "----  配接器 应用于 容器 -- container adapters (deque ,stack ) ，" << endl ;
+    cout << "----  迭代器 --iterator adapters (Insert ,Reverse ,IOStream Iterators )" << endl ;
+
+    ostream_iterator<int>   outite(cout ,"  ") ;
+    int ia[] = {0 ,1 ,2 ,3 ,4 ,5 } ;
+    deque<int>  id(ia ,ia+6) ;
+    copy(id.begin() ,id.end() ,outite) ;
+    cout << endl ;
+
+    copy(ia+1 ,ia+2 ,front_inserter(id) ) ; 
+    copy(id.begin() ,id.end() ,outite) ;
+    cout << endl ;
+
+    copy(ia+1 ,ia+2 ,back_inserter(id) ) ;
+    copy(id.begin() ,id.end() ,outite) ;
+    cout << endl ;
+
+    copy(ia+1 ,ia+2 ,inserter(id ,id.begin()+1) ) ;
+    copy(id.begin() ,id.end() ,outite) ;
+    cout << endl ;
+    
+    copy(id.rbegin() ,id.rend() ,outite) ;
+    cout << endl ;
+/*
+    istream_iterator<int>    inite(cin) ,eos ;
+    // C:\> type in.txt | STLTest.exe
+    copy(inite ,eos ,inserter(id ,id.begin())) ;
+    copy(id.begin() ,id.end() ,outite) ;
+    cout << endl ;       */ /*
+    ifstream    fin("in.txt") ;
+    istream_iterator<int>    inite(fin) ,eos ;
+    copy(inite ,eos ,inserter(id ,id.begin())) ;
+    copy(id.begin() ,id.end() ,outite) ;
+    cout << endl ;
+    fin.close() ;   */  
+
+/*
+    greater<int>    ig ;
+    // boolalpha 时一种所谓的iostream mainipulators （操控器），用来控制输出入
+    // 设备的状态 true -> "true" , false -> "false" 
+    cout << boolalpha << ig(4 ,6) <<endl  ;
+    cout << greater<int>()(4 ,6) << endl ;
+    //----------算术类仿函数 --------
+    plus<int>   plusobj ;
+    minus<int>  minusobj ;
+    multiplies<int> multipliesobj ;
+    divides<int>    dividesobj ;
+    modulus<int>    modulusobj ;
+    negate<int>     negateobj ;
+    //一以下运行上述对象 ，履行函数功能 ------------
+    cout << "" << plusobj(3,5) << endl ;
+    cout << "" << minusobj(3,5) << endl ;
+    cout << "" << multipliesobj(3,5) << endl ;
+    cout << "" << dividesobj(3,5) << endl ;
+    cout << "" << modulusobj(3,5) << endl ;
+    cout << "" << negateobj(3) << endl ;
+    //以下直接以仿函数的临时对象履行函数功能 --------
+    cout << "plus<int>()(3,5) " << plus<int>()(3,5) << endl ;
+    cout << "minus<int>()(3,5) " << minus<int>()(3,5) << endl ;
+    cout << "multiplies<int>()(3,5) " << multiplies<int>()(3,5) << endl ;
+    cout << "divides<int>()(3,5) " << divides<int>()(3,5) << endl ;
+    cout << "modulus<int>()(3,5) " << modulus<int>()(3,5) << endl ;
+    cout << "negate<int>()(3) " << negate<int>()(3) << endl ;
+    //--------- 关系运算类仿函数 --------
+    // 非临时对象 应用如上 略 ------
+    //以下直接以仿函数的临时对象履行函数功能 --------
+    cout << "equal_to<int>()(3,5) " << equal_to<int>()(3,5) << endl ;
+    cout << "not_equal_to<int>()(3,5) " << not_equal_to<int>()(3,5) << endl ;
+    cout << "greater<int>()(3,5) " << greater<int>()(3,5) << endl ;
+    cout << "greater_equal<int>()(3,5) " << greater_equal<int>()(3,5) << endl ;
+    cout << "less<int>()(3,5)" << less<int>()(3,5) << endl ;
+    cout << "less_equal<int>()(3,5) " << less_equal<int>()(3,5) << endl ;
+    //--------- 逻辑运算类仿函数 --------
+    // 非临时对象 应用如上 略 ------
+    //以下直接以仿函数的临时对象履行函数功能 --------
+    cout << "logical_and<int>()(true,false) " << logical_and<int>()(true,false) << endl ;
+    cout << "logical_or<int>()(true ,false) " << logical_or<int>()(true ,false) << endl ;
+    cout << "logical_not<int>()(true) " << logical_not<int>()(true) << endl ;
+    // -------证同 、选择 、投射 ---------
+    // identity ,select1st ,select2nd ,project1st ,project2nd ;
+
+    typedef     pair<int ,int>  PairInt ;
+    PairInt    Pair(3 ,5) ;
+    cout << "identity<int>()(3) " << identity<int>()(3) << endl ;
+    cout << "select1st<PairInt>()(Pair) " << select1st<PairInt>()(Pair) << endl ;
+    cout << "select2nd<PairInt>()(Pair) " << select2nd<PairInt>()(Pair) << endl ;
+    cout << "project1st<int,int>()(3,5) " << project1st<int,int>()(3,5) << endl ;
+    cout << "project2nd<int,int>()(3,5) " << project2nd<int,int>()(3,5) << endl ;
+    // ---------证同元素 -----------
+    plus<int>       Op1 ;
+    multiplies<int> Op2 ;
+    cout << "identity_element(plus<int>()) " << identity_element(Op1) << endl ;
+    cout << "identity_element(multiplies<int>()) " << identity_element(Op2) << endl ;
+
+
+    /*
+    //  Test----copy_backward(...)
+    {
+      int ia[] = {0 ,1 ,2 ,3 ,4 ,5 ,6 ,7 ,8} ;
+      for_each(ia ,ia+9 ,display<int>() ) ;
+      cout << endl << "copy_backward(ia+2 ,ia+7 ,ia+9) : "  ;
+      copy_backward(ia+2 ,ia+7 ,ia+9) ;
+      for_each(ia ,ia+9 ,display<int>() ) ;
+      cout << endl ;
+    }
+    {
+      int ia[] = {0 ,1 ,2 ,3 ,4 ,5 ,6 ,7 ,8} ;
+      for_each(ia ,ia+9 ,display<int>() ) ;
+      cout << endl << "copy_backward(ia+2 ,ia+7 ,ia+5) : "  ;
+      copy_backward(ia+2 ,ia+7 ,ia+5) ;
+      for_each(ia ,ia+9 ,display<int>() ) ;
+      cout << endl ;
+    }
+    {
+      int ia[] = {0 ,1 ,2 ,3 ,4 ,5 ,6 ,7 ,8} ;
+      deque<int>    id(ia ,ia+9) ;
+      deque<int>::iterator  first = id.begin() ;
+      deque<int>::iterator  last = id.end() ;
+      ++++first ;//advavce(first ,2) ;
+      cout << *first << endl ;
+      ----last ;//advance(last ,-2) ;
+      cout << *last << endl ;
+      deque<int>::iterator  result = id.end() ;
+      cout << *result << endl ;
+      copy_backward(first ,last ,result) ;
+      cout << "copy_backward(first ,last ,result) : "  ;
+      for_each(id.begin() ,id.end() ,display<int>()) ;
+      cout << endl ;
+    }
+    {
+      int ia[] = {0 ,1 ,2 ,3 ,4 ,5 ,6 ,7 ,8} ;
+      deque<int>    id(ia ,ia+9) ;
+      deque<int>::iterator  first = id.begin() ;
+      deque<int>::iterator  last = id.end() ;
+      ++++first ;//advavce(first ,2) ;
+      cout << *first << endl ;
+      ----last ;//advance(last ,-2) ;
+      cout << *last << endl ;
+      deque<int>::iterator  result = id.begin() ;
+      advance(result ,5) ;
+      cout << *result << endl ;
+      copy_backward(first ,last ,result) ;
+      cout << "copy_backward(first ,last ,result) : "  ;
+      for_each(id.begin() ,id.end() ,display<int>()) ;
+      cout << endl ;
+    }
+
+/*   // Test--------copy(...)
+    const   char ccs[5] = { 'a' ,'b' ,'c' ,'d' ,'e' } ;
+    char    ccd[5] ;
+    copy(ccs ,ccs+5 ,ccd) ; 
+    for_each(ccd ,ccd+5 ,display<char>()) ;
+    cout << endl ;
+
+    const wchar_t cwcs[5] = { 'a' ,'b' ,'c' ,'d' ,'e' } ;
+    wchar_t cwcd[5] ;     
+    copy(cwcs ,cwcs+5 ,cwcd) ; 
+    for_each(cwcd ,cwcd+5 ,display<wchar_t>()) ;
+    cout << endl ;
+
+    int ia[] = {0 ,1 ,2 ,3 ,4 } ;
+    list<int>   ilists(ia ,ia+5) ;
+    list<int>   ilistd(5) ;
+    copy(ilists.begin() ,ilists.end() ,ilistd.begin()) ;
+    for_each(ilistd.begin() ,ilistd.end() ,display<int>()) ;
+    cout << endl ;
+
+    vector<int> ivecs(ia ,ia+5) ;
+    vector<int> ivecd(5) ;
+    copy(ivecs.begin() ,ivecs.end() ,ivecd.begin()) ;
+    for_each(ivecd.begin() ,ivecd.end() ,display<int>()) ;
+    cout << endl ;
+
+    C   c[5] ;
+    vector<C>   Cvs(c ,c+5) ;
+    vector<C>   Cvd(5) ;
+    copy(Cvs.begin() ,Cvs.end() ,Cvd.begin()) ; 
+    for_each(Cvd.begin() ,Cvd.end() ,display<C>()) ;
+    cout << endl ;
+
+    deque<C>    Cds(c ,c+5) ;
+    deque<C>    Cdd(5) ;
+    copy(Cds.begin() ,Cds.end() ,Cdd.begin()) ;
+    for_each(Cdd.begin() ,Cdd.end() ,display<C>()) ;
+    cout << endl ;
+
+    string  str[5] = { "11111" ,"22222" ,"33333" ,"44444" ,"55555"} ;
+    vector<string>  strvs(str ,str+5) ;
+    vector<string>  strvd(5) ;
+    copy(strvs.begin() ,strvs.end() ,strvd.begin()) ;
+    for_each(strvd.begin() ,strvd.end() ,display<string>()) ;
+    cout << endl ;
+
+    deque<string>   strds(str ,str+5) ;
+    deque<string>   strdd(5) ;
+    copy(strds.begin() ,strds.end() ,strdd.begin()) ;
+    for_each(strdd.begin() ,strdd.end() ,display<string>()) ;
+    cout << endl ;
+
+
+/*
+    {
+      int ia[] = {0 ,1 ,2 ,3 ,4 ,5 ,6 ,7 ,8} ;
+      for_each(ia ,ia+9 ,display<int>() ) ;
+      cout << endl << "copy(ia+2 ,ia+7 ,ia) : "  ;
+      copy(ia+2 ,ia+7 ,ia) ;
+      for_each(ia ,ia+9 ,display<int>() ) ;
+      cout << endl ;
+    }
+    {
+      int ia[] = {0 ,1 ,2 ,3 ,4 ,5 ,6 ,7 ,8} ;
+      for_each(ia ,ia+9 ,display<int>() ) ;
+      cout << endl << "copy(ia+2 ,ia+7 ,ia+4) : "  ;
+      copy(ia+2 ,ia+7 ,ia+4) ;
+      for_each(ia ,ia+9 ,display<int>() ) ;
+      cout << endl ;
+    }
+    {
+      int ia[] = {0 ,1 ,2 ,3 ,4 ,5 ,6 ,7 ,8} ;
+      deque<int>    id(ia ,ia+9) ;
+      deque<int>::iterator  first = id.begin() ;
+      deque<int>::iterator  last = id.end() ;
+      ++++first ;//advavce(first ,2) ;
+      cout << *first << endl ;
+      ----last ;//advance(last ,-2) ;
+      cout << *last << endl ;
+      deque<int>::iterator  result = id.begin() ;
+      cout << *result << endl ;
+      copy(first ,last ,result) ;
+      cout << "copy(first ,last ,result) : "  ;
+      for_each(id.begin() ,id.end() ,display<int>()) ;
+      cout << endl ;
+    }
+    {
+      int ia[] = {0 ,1 ,2 ,3 ,4 ,5 ,6 ,7 ,8} ;
+      deque<int>    id(ia ,ia+9) ;
+      deque<int>::iterator  first = id.begin() ;
+      deque<int>::iterator  last = id.end() ;
+      ++++first ;//advavce(first ,2) ;
+      cout << *first << endl ;
+      ----last ;//advance(last ,-2) ;
+      cout << *last << endl ;
+      deque<int>::iterator  result = id.begin() ;
+      advance(result ,4) ;
+      cout << *result << endl ;
+      copy(first ,last ,result) ;
+      cout << "copy(first ,last ,result) : "  ;
+      for_each(id.begin() ,id.end() ,display<int>()) ;
+      cout << endl ;
+    }
+    //auto_ptr<int> pi(new int(1024));  //智能指针-----------  auto_ptr<Tpye>
+
+/*    // 基本算法 <stl_algobase.h>
+    int ia[9] = {0 ,1 ,2 ,3 ,4 ,5 ,6 ,7 ,8} ;
+    vector<int> iv1(ia ,ia+5) ;
+    vector<int> iv2(ia ,ia+9) ;
+
+    cout << *(mismatch(iv1.begin() ,iv1.end() ,iv2.begin()).first) <<endl ;
+    cout << *(mismatch(iv1.begin() ,iv1.end() ,iv2.begin()).second) <<endl ;
+
+    cout << equal(iv1.begin() ,iv1.end() ,iv2.begin() )<<endl  ;
+    cout << equal(iv1.begin() ,iv1.end() ,&ia[3] )<<endl  ;
+    cout << equal(iv1.begin() ,iv1.end() ,&ia[3] ,less<int>() )<<endl  ;
+
+    fill(iv1.begin() ,iv1.end() ,9) ;
+    for_each(iv1.begin() ,iv1.end() ,display<int>() ) ;
+    cout << endl ;
+    fill_n(iv1.begin() ,3 ,7) ;
+    for_each(iv1.begin() ,iv1.end() ,display<int>()) ;
+    cout << endl ;
+
+    vector<int>::iterator   ite1 = iv1.begin() ;
+    vector<int>::iterator   ite2 = ite1 ;
+    advance(ite2 ,3) ;
+    iter_swap(ite1 ,ite2) ;
+    cout << "*ite1: " << *ite1 <<" , *ite2: " <<*ite2 << endl ;
+    for_each(iv1.begin() ,iv1.end() ,display<int>() ) ;
+    cout << endl ;
+    cout << max(*ite1 ,*ite2) << endl ;
+    cout << min(*ite1 ,*ite2) << endl ;
+    //!!!!!!!!!! 以下为比较迭代器本身的大小 ，以上为比较迭代器的值的大小
+    cout << *max(ite1 ,ite2) << endl ;
+    cout << *min(ite1 ,ite2) << endl ;
+
+    swap(*iv1.begin() ,*iv2.begin()) ;
+    for_each(iv1.begin() ,iv1.end() ,display<int>() ) ;
+    cout << endl ;
+    for_each(iv2.begin() ,iv2.end() ,display<int>() ) ;
+    cout << endl ;
+    string  stra1[] = { "11111" ,"22222" ,"222333" } ;
+    string  stra2[] = { "11111" ,"22222" ,"222444" } ;
+    for_each(stra1 ,stra1+3 ,display<string>() ) ;
+    cout << endl ;
+    for_each(stra2 ,stra2+3 ,display<string>() ) ;
+    for_each(stra2 ,stra2+3 ,Display ) ;
+    cout << endl ;
+    cout << lexicographical_compare(stra1 ,stra1+3 ,stra2 ,stra2+3)<<endl ; //1 ---stra1 小于stra2
+    cout << lexicographical_compare(stra1 ,stra1+3 ,stra2 ,stra2+3 ,greater<string>())<<endl  ;
+    //0 ---stra1 不大于 stra2
+//---------------------------------------------------------------------------
+/*  //数值算法---<stl_numeric.h>
+    cout << "----  Test--数值算法---<stl_numeric.h> " << endl ;
+        int     ia[5] = {1 ,2 ,3 ,4 ,5} ;
+        vector<int> iv(ia ,ia+5) ;
+        cout << accumulate(iv.begin() ,iv.end() ,0 ) << endl ;
+        cout << accumulate(iv.begin() ,iv.end() ,0 ,minus<int>())<<endl ;
+
+        cout << inner_product(iv.begin() ,iv.end() ,iv.begin() ,10) << endl ;
+        cout << inner_product(iv.begin() ,iv.end() ,iv.begin() ,10 ,minus<int>() ,plus<int>()) << endl ;
+
+        ostream_iterator<int> oite(cout ," ") ;
+        partial_sum(iv.begin() ,iv.end() ,oite) ;
+        cout << endl ;
+        partial_sum(iv.begin() ,iv.end() ,oite ,minus<int>()) ;  
+        cout << endl ;
+
+        adjacent_difference(iv.begin() ,iv.end() ,oite ) ; 
+        cout << endl ;
+        adjacent_difference(iv.begin() ,iv.end() ,oite ,plus<int>() ) ;  
+        cout << endl ;
+
+        cout << " power(10 ,3) = " << power(10 ,3) << endl ;
+        cout << endl ;
+        cout << " power(10 ,3 ,plus<int>()) = " << power(10 ,3 ,plus<int>()) ;
+        cout << endl ;
+
+        int n=3 ;
+        iota(iv.begin() ,iv.end() ,n) ;
+        for(int i=0 ;i<iv.size() ;i++)
+                cout << iv[i] << ' ' ;
+//---------------------------------------------------------------------------
+
+/*      // set 相关算法  <set>
+    	cout << "----  Test--set 相关算法  <set>  " << endl ;
+        int     ia1[6] = {1 ,2 ,5 ,7 ,9 ,11 } ;
+        int     ia2[7] = {1 ,1 ,2 ,3 ,5 ,8 ,13} ;
+        multiset<int>   S1(ia1 ,ia1+6) ;
+        multiset<int>   S2(ia2 ,ia2+7) ;
+        cout << " Set S1 :" ;
+        for_each(S1.begin() ,S1.end() ,display<int>()) ;
+        cout << endl ; 
+        cout << " Set S2 :" ;
+        for_each(S2.begin() ,S2.end() ,display<int>()) ;
+        cout << endl ;
+        multiset<int>::iterator first1 = S1.begin() ;
+        multiset<int>::iterator last1 = S1.end() ;
+        multiset<int>::iterator first2 = S2.begin() ;
+        multiset<int>::iterator last2 = S2.end() ;
+        cout << " Union of S1 and S2 : " ;
+        set_union(first1 ,last1 ,first2 ,last2 ,ostream_iterator<int>(cout ," ")) ;
+        cout << endl ;
+        
+        first1 = S1.begin() ;
+        first2 = S2.begin() ;
+        cout << " Intersection of S1 and S2 :" ;
+        set_intersection(first1 ,last1 ,first2 ,last2 ,ostream_iterator<int>(cout ," ")) ;
+        cout <<endl ;
+
+        first1 = S1.begin() ;
+        first2 = S2.begin() ;
+        cout << " Differance of S1 and S2(S1-S2) :" ;
+        set_difference(first1 ,last1 ,first2 ,last2 ,ostream_iterator<int>(cout ," ")) ;
+        cout <<endl ;
+
+        first1 = S1.begin() ;
+        //last1 = S1.end() ;
+        first2 = S2.begin() ;
+        //last2 = S2.end() ;
+        cout << " Differance of S2 and S1(S2-S1) :" ;
+        set_difference(first2 ,last2 ,first1 ,last1 ,ostream_iterator<int>(cout ," ")) ;
+        cout <<endl ;
+
+        first1 = S1.begin() ;
+        first2 = S2.begin() ;
+        cout << " Symmetric difference of S1 and S2 :" ;
+        set_symmetric_difference(first1 ,last1 ,first2 ,last2 ,ostream_iterator<int>(cout ," ")) ;
+        cout <<endl ;      */

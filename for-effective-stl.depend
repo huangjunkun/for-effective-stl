@@ -1,0 +1,50 @@
+# depslib dependency file v1.0
+1325904386 source:e:\github\for-effective-stl\main.cpp
+	"stdafx.h"
+	"main.h"
+
+1325903433 e:\github\for-effective-stl\stdafx.h
+	<conio.h>
+	<time.h>
+	<set>
+	<iostream>
+	<algorithm>
+	<iterator>
+	<numeric>
+	<vector>
+	<functional>
+	<string>
+	<deque>
+	<list>
+	<string>
+	<fstream>
+	<set>
+	<map>
+	<hash_set>
+	<hash_map>
+	<bitset>
+	<memory>
+	<windows.h>
+
+1325906598 e:\github\for-effective-stl\main.h
+	"stdafx.h"
+	"thread_class.h"
+
+1325906403 e:\github\for-effective-stl\thread_class.h
+	<iostream>
+	<cstdio>
+	<cassert>
+	<iomanip>
+	<limits.h>
+	<string>
+	<vector>
+	<memory>
+	<map>
+	<iterator>
+	<fstream>
+	<cstring>
+	<algorithm>
+	<strstream>
+	<windows.h>
+	<process.h>
+
