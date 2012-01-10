@@ -3,18 +3,22 @@
 
 #pragma once
 #include "stdafx.h"
-#include "thread_class.h"
-#include "win32_sync_func.h"
+#include "../project-tool/win_thread_class.h"
+#include "../project-tool/win_sync_func.h"
 
 using namespace std;
 using namespace test_namespace;
 
 
+static junkun::mutex s_mxPrintContainer;//临界区
+static junkun::critical_section s_csPrintContainer;//重要区段 -----
+
 //---条款12：切勿对 STL 容器的线程安全性有不且实际的依赖 -------------------
 #define LOCKNAME    "LockName"
 template <typename Container >
 class LockContainer
-{  // 异常 ，亦析构局部对象，即~LockContainer() ---健壮性 ---
+{
+    // 异常 ，亦析构局部对象，即~LockContainer() ---健壮性 ---
 private:
     HANDLE  hMutex;
     const Container&   c;
@@ -25,7 +29,7 @@ public:
         {
             hMutex = CreateMutex(NULL, true, LOCKNAME);
             if(hMutex == NULL)//    GetLastError()==ERROR_ALREADY_EXISTS
-     ;//cout << " (GetLastError()==ERROR_ALREADY_EXISTS) \n";
+                ;//cout << " (GetLastError()==ERROR_ALREADY_EXISTS) \n";
             else //(GetLastError()==0)  //NULL
             {
                 cout << " (GetLastError()!=ERROR_ALREADY_EXISTS) \n";
@@ -52,33 +56,29 @@ template <typename Container >
 void    PrintContainer(const Container& c)
 {
     // ---   Lock Container--
-    LockContainer<Container> Lock(c); // ----No Result !!!!!!!
+    junkun::scoped_lock lock(s_mxPrintContainer);
     cout << ::GetCurrentThreadId() << " : print  container ---------- \n";
     for_each(c.begin(), c.end(), ptr_fun(print<Container::value_type>) );
     cout << endl;
     Sleep(3000);
 }
-// UnitMain.cpp ------------
-//TCriticalSection    *pLock = new TCriticalSection; //重要区段 -----
-//TEvent  *ThreadRunOver = new TEvent(NULL, false, false, "ThreadRunOver");
+
 //---------------------------------------------------------------------------
 template <typename Container >
 void PrintContainer(const Container& c, const int& ThreadNum)
 {
-    pLock->Acquire();
+    // ---   Lock Container--
+    junkun::scoped_lock lock(s_csPrintContainer);
     //try
     {
-      // ---   Lock Container--
-      //LockContainer<Container> Lock(c); // ----No Result !!!!!!!
-      cout << "Thread "<<ThreadNum << " : print  container ---------- \n";
-      for_each(c.begin(), c.end(), ptr_fun(print<typename Container::value_type>) );
-      cout << endl;
-      Sleep(3000);
+        cout << "Thread "<<ThreadNum << " : print  container ---------- \n";
+        for_each(c.begin(), c.end(), ptr_fun(print<typename Container::value_type>) );
+        cout << endl;
+        Sleep(2000);
     }
     //__finally
     {
-        pLock->Release();
-        ThreadRunOver->SetEvent();
+        //ThreadRunOver->SetEvent();
     }
     //// ---   UnLock Container--
 }
@@ -86,7 +86,7 @@ class TThread : public thread_base
 {
 public:
     TThread(bool bCreateSuspended)
-    : thread_base(NULL, bCreateSuspended)
+        : thread_base(NULL, bCreateSuspended)
     {}
 
 protected:
@@ -108,7 +108,7 @@ protected:
 public:
 
     __fastcall TTestThread(bool CreateSuspended, const Container& container, int Num)
-    : TThread(CreateSuspended), c(container), ThreadNum(Num)    //
+        : TThread(CreateSuspended), c(container), ThreadNum(Num)    //
     {
         //this->FreeOnTerminate = true; //线程结束时自动删除
     }
@@ -167,7 +167,8 @@ public:  // --- 3
             pointee_ =  new T[numObjects];
         }
         //__finally
-        {  // --- 4
+        {
+            // --- 4
             return pointee_;
         }
     }
@@ -224,17 +225,17 @@ struct badValue : public unary_function<bool, int>
 
 class   C
 {
-    public:
-        C():_data(3) { }
-        // there is not trivial operator
-/*       ostream&    operator << (ostream& os )   // friend
-       {
-            os << _data;
-            return  os;
-       }     */
-       friend ostream&    operator << (ostream& os, const C& c );
-    private:
-        int _data;
+public:
+    C():_data(3) { }
+    // there is not trivial operator
+    /*       ostream&    operator << (ostream& os )   // friend
+           {
+                os << _data;
+                return  os;
+           }     */
+    friend ostream&    operator << (ostream& os, const C& c );
+private:
+    int _data;
 };
 //---------------------------------------------------------------------------
 
@@ -246,10 +247,10 @@ ostream&    operator << (ostream& os, const C& c )   //
 template <class T>
 struct display
 {
-        void operator()(const T& x)
-        {
-                cout << x << ' ';
-        }
+    void operator()(const T& x)
+    {
+        cout << x << ' ';
+    }
 }; /*
 template <class T>
 void    Display(const T& x)  //   const ostream& os,
@@ -263,21 +264,42 @@ void    Display(const string& x)
 //---------------------------------------------------------------------------
 namespace   MySpace
 {
-  class Shape
-  {   public: virtual void display() = 0; };
-  class Rect : public Shape
-  {   public: virtual void display() { cout << " Rect ----" << endl;} };
-  class Circle : public Shape
-  {   public: virtual void display() { cout << " Circle ----" << endl;} };
-  class Square : public Shape
-  {   public: virtual void display() { cout << " Square ----" << endl;} };
+class Shape
+{
+public:
+    virtual void display() = 0;
+};
+class Rect : public Shape
+{
+public:
+    virtual void display()
+    {
+        cout << " Rect ----" << endl;
+    }
+};
+class Circle : public Shape
+{
+public:
+    virtual void display()
+    {
+        cout << " Circle ----" << endl;
+    }
+};
+class Square : public Shape
+{
+public:
+    virtual void display()
+    {
+        cout << " Square ----" << endl;
+    }
+};
 
 }
 //---------------------------------------------------------------------------
 class   Int
 {
 public:
-    explicit    Int(int i)  : m_i(i){}
+    explicit    Int(int i)  : m_i(i) {}
     void    Print() const
     {
         cout << '[' << m_i <<']';
@@ -298,7 +320,7 @@ int MyRand(int  r)
 
 }
 //---------------------------------------------------------------------------
-        //-----Test hash_set ---
+//-----Test hash_set ---
 struct  eqstr
 {
     bool operator () (const char*s1, const char* s2) const
@@ -312,7 +334,7 @@ typedef hash_set<c_char_ptr, hash<c_char_ptr>, eqstr> str_hash_t;
 
 str_hash_t::const_iterator
 lookup(const str_hash_t& Set,
-            const char* word)
+       const char* word)
 {
     str_hash_t::const_iterator it = Set.find(word);
     cout << " " << word << " : "
@@ -400,7 +422,7 @@ private:
     int     _ID;
 };
 typedef struct IDLess :
-public binary_function<Employee, Employee, bool>
+    public binary_function<Employee, Employee, bool>
 {
     bool operator () (const Employee& lhs, const Employee& rhs) const
     {
@@ -410,19 +432,19 @@ public binary_function<Employee, Employee, bool>
 typedef set<Employee, IDLess>   EmpIDSet;
 //---条款24：当效率至关重要时，请在map::operator[] 和 map::insert 之间谨慎做出选择-------
 template<typename MapType, typename KeyArgType,
-         typename ValueArgType >
+typename ValueArgType >
 typename MapType::iterator
 EfficientAddOrUpdate(MapType& m, const KeyArgType& k,
                      const ValueArgType );
 template<typename MapType, typename KeyArgType,
-         typename ValueArgType >
+typename ValueArgType >
 typename MapType::iterator
 EfficientAddOrUpdate(MapType& m, const KeyArgType& k,
                      const ValueArgType v)
 {
     typename MapType::iterator  lb = m.lower_bound(k);
     if(lb!=m.end() &&
-       !(m.key_comp()(k, lb->first)))
+            !(m.key_comp()(k, lb->first)))
     {
         lb->second = v;
         return  lb;
@@ -476,10 +498,10 @@ public:
     PointAverage(): xSum(0), ySum(0), numPoints(0) {}
     const dPoint operator () (const dPoint& avgSoFar, const dPoint& P)
     {
-       ++numPoints;
-       xSum += P.x;
-       ySum += P.y;
-       return   dPoint(xSum/numPoints, ySum/numPoints);
+        ++numPoints;
+        xSum += P.x;
+        ySum += P.y;
+        return   dPoint(xSum/numPoints, ySum/numPoints);
     }
 };
 // ------ for_each(...) --------
@@ -492,9 +514,9 @@ public:
     PointAverage_(): xSum(0), ySum(0), numPoints(0) {}
     void  operator () (const dPoint& P)
     {
-       ++numPoints;
-       xSum += P.x;
-       ySum += P.y;
+        ++numPoints;
+        xSum += P.x;
+        ySum += P.y;
     }
     dPoint result() const
     {
@@ -519,7 +541,8 @@ int ciCharCopare(char c1, char c2)
 }
 int ciStringCompareImpl(const string& s1, const string& s2);
 int ciStringCompare(const string& s1, const string& s2)
-{ // --- 保证合法调用STL算法： mismatch（...） -----
+{
+    // --- 保证合法调用STL算法： mismatch（...） -----
     if(s1.size()<=s2.size())
         return  ciStringCompareImpl(s1, s2);
     else
@@ -553,19 +576,19 @@ bool ciStringCompare_(const string& s1, const string& s2)
 
 //---条款36：理解copy_if 算法的正确实现 ，STL没有包含copy_if的实现--------------
 template <typename InputIterator,
-          typename OutputIterator,
-          typename Predicate >
- // ------ OK call STL 算法remove_copy_if(...)----------
+typename OutputIterator,
+typename Predicate >
+// ------ OK call STL 算法remove_copy_if(...)----------
 OutputIterator copy_if_(InputIterator first, InputIterator last,
                         OutputIterator destFirst, Predicate Pre)
 {
     return  remove_copy_if(first, last, destFirst, not1(Pre) );
 }
 template <typename InputIterator,
-          typename OutputIterator,
-          typename Predicate >
+typename OutputIterator,
+typename Predicate >
 OutputIterator copy_if(InputIterator first, InputIterator last,
-                        OutputIterator destFirst, Predicate Pre)
+                       OutputIterator destFirst, Predicate Pre)
 {
     while(first!=last)
     {
@@ -582,9 +605,10 @@ OutputIterator copy_if(InputIterator first, InputIterator last,
 // ---- 有可以与STL 所采用的传值传递函数子的习惯保持一致
 // ---- “鱼与熊掌兼得” ---谨慎处理BPFC的拷贝构造函数 ----
 class Widget2
-{  // ----  具体内容略 --------
+{
+    // ----  具体内容略 --------
 };
- /*  */
+/*  */
 template <typename T>
 class GoodFunctor; // 模板类 BPFC 声明 ---
 // BPFC = "Big Polymorphic Functor Class "
@@ -614,10 +638,12 @@ class BPFC1 : public BPFCImpl<T>
 public:
     // ....
     ~BPFC1()
-    {// ....
+    {
+        // ....
     }
     void operator() (const T& val) const
-    {// ....
+    {
+        // ....
         cout << "BPFC1 ---- void operator() (const T& val) \n";
         cout << " ------ " << val << "------- \n";
     }
@@ -628,10 +654,12 @@ class BPFC2 : public BPFCImpl<T>
 public:
     // ....
     ~BPFC2()
-    {// ....
+    {
+        // ....
     }
     void operator() (const T& val) const
-    {// ....
+    {
+        // ....
         cout << "BPFC2 ---- void operator() (const T& val) \n";
         cout << " ------ " << val << "------- \n";
     }
@@ -689,7 +717,7 @@ private:
     T   lowVal, highVal;
 public:
     betweenValues(const T& l, const T& h)
-    : lowVal(l), highVal(h) { }
+        : lowVal(l), highVal(h) { }
     bool    operator () (const T& val) const
     {
         return val>lowVal && val<highVal;
@@ -726,18 +754,18 @@ struct Average : public binary_function<FPType, FPType, FPType>
     }
 };
 template <typename InputIter1,
-          typename InputIter2 >
+typename InputIter2 >
 void    writeAverages(InputIter1 begin1, InputIter1 end1,
                       InputIter1 begin2, ostream& os)
 {
     transform(begin1, end1, begin2,
               ostream_iterator<typename iterator_traits<InputIter1>::value_type>(os, " "),
               average<typename iterator_traits<InputIter1>::value_type> );
-/*or:
-    transform(begin1, end1, begin2,
-              ostream_iterator<typename iterator_traits<InputIter1>::value_type>(os, " "),
-              Average<typename iterator_traits<InputIter1>::value_type>() );
-*/
+    /*or:
+        transform(begin1, end1, begin2,
+                  ostream_iterator<typename iterator_traits<InputIter1>::value_type>(os, " "),
+                  Average<typename iterator_traits<InputIter1>::value_type>() );
+    */
 }
 //---------------------------------------------------------------------------
 

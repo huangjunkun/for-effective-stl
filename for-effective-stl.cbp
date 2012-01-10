@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-D_DEBUG" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -33,6 +34,12 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="main.h" />
+		<Unit filename="stdafx.h" />
+		<Unit filename="test_win32_sync_func.cpp" />
+		<Unit filename="thread_class.h" />
+		<Unit filename="win32_sync_func.h" />
+		<Unit filename="..\project-tool\c_single_file.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

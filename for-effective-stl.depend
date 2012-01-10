@@ -1,9 +1,10 @@
 # depslib dependency file v1.0
-1325904386 source:e:\github\for-effective-stl\main.cpp
+1326190812 source:e:\github\for-effective-stl\main.cpp
 	"stdafx.h"
 	"main.h"
+	"../project-tool/win_sync_func.h"
 
-1325903433 e:\github\for-effective-stl\stdafx.h
+1326100706 e:\github\for-effective-stl\stdafx.h
 	<conio.h>
 	<time.h>
 	<set>
@@ -25,10 +26,12 @@
 	<bitset>
 	<memory>
 	<windows.h>
+	"../project-tool/c_single_file.h"
 
-1325906598 e:\github\for-effective-stl\main.h
+1326189637 e:\github\for-effective-stl\main.h
 	"stdafx.h"
-	"thread_class.h"
+	"../project-tool/win_thread_class.h"
+	"../project-tool/win_sync_func.h"
 
 1325906403 e:\github\for-effective-stl\thread_class.h
 	<iostream>
@@ -47,4 +50,81 @@
 	<strstream>
 	<windows.h>
 	<process.h>
+
+1325926969 e:\github\learn-cplusplus\c_single_file.h
+	<exception>
+	<iostream>
+	<string>
+	<vector>
+	<fstream>
+	<tchar.h>
+	<cctype>
+	<cstdio>
+	<cstdlib>
+	<cassert>
+
+1326185392 e:\github\for-effective-stl\win32_sync_func.h
+	<iostream>
+	<limits.h>
+	<windows.h>
+	"stdafx.h"
+
+1326103333 e:\github\project-tool\c_single_file.h
+	<io.h>
+	<exception>
+	<iostream>
+	<cstring>
+	<string>
+	<vector>
+	<fstream>
+	<tchar.h>
+	<wchar.h>
+	<cctype>
+	<cstdio>
+	<cstdarg>
+	<cstdlib>
+	<cassert>
+	<ctime>
+	<clocale>
+	<windows.h>
+
+1326184153 source:e:\github\for-effective-stl\test_win32_sync_func.cpp
+	<iostream>
+	<cstdio>
+	"win32_sync_func.h"
+
+1326186105 source:e:\github\project-tool\win32_sync_func_test.cpp
+	<iostream>
+	<cstdio>
+	"win32_sync_func.h"
+
+1326186108 e:\github\project-tool\win32_sync_func.h
+	<iostream>
+	<limits.h>
+	<windows.h>
+	"c_single_file.h"
+
+1325906403 e:\github\project-tool\win_thread_class.h
+	<iostream>
+	<cstdio>
+	<cassert>
+	<iomanip>
+	<limits.h>
+	<string>
+	<vector>
+	<memory>
+	<map>
+	<iterator>
+	<fstream>
+	<cstring>
+	<algorithm>
+	<strstream>
+	<windows.h>
+	<process.h>
+
+1326185842 e:\github\project-tool\win_sync_func.h
+	<iostream>
+	<limits.h>
+	<windows.h>
+	"c_single_file.h"
 
