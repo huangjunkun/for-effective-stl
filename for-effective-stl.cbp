@@ -36,10 +36,10 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="main.h" />
 		<Unit filename="stdafx.h" />
-		<Unit filename="test_win32_sync_func.cpp" />
-		<Unit filename="thread_class.h" />
-		<Unit filename="win32_sync_func.h" />
 		<Unit filename="..\project-tool\c_single_file.h" />
+		<Unit filename="..\project-tool\win32_sync_func.h" />
+		<Unit filename="..\project-tool\win32_sync_func_test.cpp" />
+		<Unit filename="..\project-tool\win_thread_class.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
