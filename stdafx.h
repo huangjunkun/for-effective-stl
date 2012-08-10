@@ -1,4 +1,4 @@
-#ifndef HEADFILE_H
+﻿#ifndef HEADFILE_H
 #define HEADFILE_H
 
 #include <conio.h>

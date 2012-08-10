@@ -1,4 +1,4 @@
-
+ï»¿
 /* {
     int     i = 111 ,j = 222 ,k = 333;
     i = j = k;
@@ -12,20 +12,20 @@
     time_t  t;
     srand(time(&t));
 /*
-//---Ìõ¿î1£ºÉ÷ÖØÑ¡ÔñÈİÆ÷ÀàĞÍ ----------------
+//---æ¡æ¬¾1ï¼šæ…é‡é€‰æ‹©å®¹å™¨ç±»å‹ ----------------
 
-//---Ìõ¿î2£º²»ÒªÊÔÍ¼±àĞ´¶ÀÁ¢ÓÚÈİÆ÷ÀàĞÍµÄ´úÂë --------------
+//---æ¡æ¬¾2ï¼šä¸è¦è¯•å›¾ç¼–å†™ç‹¬ç«‹äºå®¹å™¨ç±»å‹çš„ä»£ç  --------------
 
-//---Ìõ¿î3£ºÈ·±£ÈİÆ÷ÖĞµÄ¶ÔÏó¿½±´ÕıÈ·¶ø¸ßĞ§ ------------
+//---æ¡æ¬¾3ï¼šç¡®ä¿å®¹å™¨ä¸­çš„å¯¹è±¡æ‹·è´æ­£ç¡®è€Œé«˜æ•ˆ ------------
 
-//---Ìõ¿î4£ºµ÷ÓÃempty() ¶ø²»ÊÇ¼ì²ésize()ÊÇ·ñÎª 0 --------
+//---æ¡æ¬¾4ï¼šè°ƒç”¨empty() è€Œä¸æ˜¯æ£€æŸ¥size()æ˜¯å¦ä¸º 0 --------
 
-//---Ìõ¿î5£ºÇø¼ä³ÉÔ±º¯ÊıÓÅÏÈÓÚÓëÖ®¶ÔÓÚµÄµ¥ÔªËØ³ÉÔ±º¯Êı ----
+//---æ¡æ¬¾5ï¼šåŒºé—´æˆå‘˜å‡½æ•°ä¼˜å…ˆäºä¸ä¹‹å¯¹äºçš„å•å…ƒç´ æˆå‘˜å‡½æ•° ----
     {
-    // 1.   Çø¼ä´´½¨ -- container::container(InputIterator begin ,InputIterator end);
-    // 2.   Çø¼ä²åÈë -- container::inserst(iterator position ,InputIterator begin ,InputIterator end);
-    // 3.   Çø¼äÉ¾³ı -- iterator/void container::erase(iterator begin ,Iiterator end);
-    // 4.   Çø¼ä¸³Öµ -- void container::assign(InputIterator begin ,InputIterator end);
+    // 1.   åŒºé—´åˆ›å»º -- container::container(InputIterator begin ,InputIterator end);
+    // 2.   åŒºé—´æ’å…¥ -- container::inserst(iterator position ,InputIterator begin ,InputIterator end);
+    // 3.   åŒºé—´åˆ é™¤ -- iterator/void container::erase(iterator begin ,Iiterator end);
+    // 4.   åŒºé—´èµ‹å€¼ -- void container::assign(InputIterator begin ,InputIterator end);
     #define NUM 100
     long    timeCount;
     int*    iData = new int[NUM];
@@ -64,13 +64,13 @@
 
     }
 /*
-//---Ìõ¿î6£ºµ±ĞÄ C++ ±àÒëÆ÷×î·³ÈËµÄ·ÖÎö»úÖÆ ------------  
-     cout << "---Ìõ¿î6£ºµ±ĞÄ C++ ±àÒëÆ÷×î·³ÈËµÄ·ÖÎö»úÖÆ ----------" << endl;
+//---æ¡æ¬¾6ï¼šå½“å¿ƒ C++ ç¼–è¯‘å™¨æœ€çƒ¦äººçš„åˆ†ææœºåˆ¶ ------------  
+     cout << "---æ¡æ¬¾6ï¼šå½“å¿ƒ C++ ç¼–è¯‘å™¨æœ€çƒ¦äººçš„åˆ†ææœºåˆ¶ ----------" << endl;
     ifstream    fin("ints.txt");
-    // ---Ã»ÓĞ¼ÓÀ¨ºÅ istream_iterator<int>(fin) £¬error C++ ±àÒëÆ÷·ÖÎö»úÖÆ£ºº¯ÊıÉùÃ÷
-    // As : (declare  function)  int f(double d); ==(µÈ¼Û) int f(double (d) ); == int f(double);  ------
+    // ---æ²¡æœ‰åŠ æ‹¬å· istream_iterator<int>(fin) ï¼Œerror C++ ç¼–è¯‘å™¨åˆ†ææœºåˆ¶ï¼šå‡½æ•°å£°æ˜
+    // As : (declare  function)  int f(double d); ==(ç­‰ä»·) int f(double (d) ); == int f(double);  ------
     // 1 . list<int>   iList( istream_iterator<int>(fin) ,istream_iterator<int>() );
-    //--- ¼ÓÀ¨ºÅ  ( istream_iterator<int>(fin) )
+    //--- åŠ æ‹¬å·  ( istream_iterator<int>(fin) )
     //list<int>   iList( (istream_iterator<int>(fin) ) ,istream_iterator<int>() );
     // 2 . or : ----------
     istream_iterator<int>   iBegin(fin) ,iEnd;
@@ -78,9 +78,9 @@
     copy(iList.begin() ,iList.end() ,ostream_iterator<int>(cout ,"\n") );
     cout << endl;
 
-//---Ìõ¿î7£ºÈç¹ûÈİÆ÷°üº¬ÁËÍ¨¹ınew ²Ù×÷´´½¨Ö¸Õë£¬ÇĞ¼ÇÔÚÈİÆ÷¶ÔÏóÎö¹¹Ç°½«Ö¸Õëdeleteµô -----
+//---æ¡æ¬¾7ï¼šå¦‚æœå®¹å™¨åŒ…å«äº†é€šè¿‡new æ“ä½œåˆ›å»ºæŒ‡é’ˆï¼Œåˆ‡è®°åœ¨å®¹å™¨å¯¹è±¡ææ„å‰å°†æŒ‡é’ˆdeleteæ‰ -----
     {  
-     cout << "---Ìõ¿î7£ºÈç¹ûÈİÆ÷°üº¬ÁËÍ¨¹ınew ²Ù×÷´´½¨Ö¸Õë£¬ÇĞ¼ÇÔÚÈİÆ÷¶ÔÏóÎö¹¹Ç°½«Ö¸Õëdeleteµô ----" << endl;
+     cout << "---æ¡æ¬¾7ï¼šå¦‚æœå®¹å™¨åŒ…å«äº†é€šè¿‡new æ“ä½œåˆ›å»ºæŒ‡é’ˆï¼Œåˆ‡è®°åœ¨å®¹å™¨å¯¹è±¡ææ„å‰å°†æŒ‡é’ˆdeleteæ‰ ----" << endl;
     deque<int*> PtrIntDeq;
     for(int i=0;i<10;i++)
         PtrIntDeq.push_back(new int(i)); 
@@ -98,9 +98,9 @@
     copy(PtrIntDeq.begin() ,PtrIntDeq.end() ,ostream_iterator<int*>(cout ," ") );
     cout << endl;
     }
-//---Ìõ¿î8£ºÇĞÎğ´´½¨°üº¬auto_ptrµÄÈİÆ÷¶ÔÏó --------------
+//---æ¡æ¬¾8ï¼šåˆ‡å‹¿åˆ›å»ºåŒ…å«auto_ptrçš„å®¹å™¨å¯¹è±¡ --------------
     {  // ------
-    cout << "---Ìõ¿î8£ºÇĞÎğ´´½¨°üº¬auto_ptrµÄÈİÆ÷¶ÔÏó -----" <<endl;
+    cout << "---æ¡æ¬¾8ï¼šåˆ‡å‹¿åˆ›å»ºåŒ…å«auto_ptrçš„å®¹å™¨å¯¹è±¡ -----" <<endl;
     vector< auto_ptr<int> > APIntPtrVec; // Shouldn't Pass compiler but OK ! --Should avoid 
     for(int i=0;i<10;++i)
         APIntPtrVec.push_back( auto_ptr<int>(new int(rand()%100)) );
@@ -114,9 +114,9 @@
              APtrToRefPtint<int>() );    
     cout << endl;
     }          */
-//---Ìõ¿î9£ºÉ÷ÖØÑ¡ÔñÉ¾³ıÔªËØµÄ·½·¨ -----------------------
+//---æ¡æ¬¾9ï¼šæ…é‡é€‰æ‹©åˆ é™¤å…ƒç´ çš„æ–¹æ³• -----------------------
     {
-    cout << " ---Ìõ¿î9£ºÉ÷ÖØÑ¡ÔñÉ¾³ıÔªËØµÄ·½·¨ ------ \n";
+    cout << " ---æ¡æ¬¾9ï¼šæ…é‡é€‰æ‹©åˆ é™¤å…ƒç´ çš„æ–¹æ³• ------ \n";
     cout << " vector or string ,deque --- erase-remove/remove_if \n";
     vector<int> iVec(20 ,2000); // or string ,deque
     for(int i=0;i<5;i++)
@@ -147,21 +147,21 @@
     cout << " iList.erase(remove(iList.begin(),iList.end() ,1999) ,iList.end());\n";
     copy(iList.begin() ,iList.end() ,ostream_iterator<int>(cout ," ") );
     cout << "\n";
-    // ...Ğ´Ñ­»·±éÀú iList,¸ù¾İÌõ¼şbadCheck,½øĞĞerase²Ù×÷  ...
+    // ...å†™å¾ªç¯éå† iList,æ ¹æ®æ¡ä»¶badCheck,è¿›è¡Œeraseæ“ä½œ  ...
     list<int>::iterator iter = iList.begin();
     badValue<2001>  badCheck;
     for(;iter!=iList.end(); )
         if(badCheck(*iter))
-            iter = iList.erase(iter);//ºó×ºµİÔö£¬·ñÔòitÊ§Ğ§£¬×¢ÒâÁË £¡£¡£¡vector,string,deque ... OK
-            // Or : iList.erase(iter++);  //Á´Ê½½á¹¹--OK,ĞòÁĞÔò error Èç vector,string,deque ...
+            iter = iList.erase(iter);//åç¼€é€’å¢ï¼Œå¦åˆ™itå¤±æ•ˆï¼Œæ³¨æ„äº† ï¼ï¼ï¼vector,string,deque ... OK
+            // Or : iList.erase(iter++);  //é“¾å¼ç»“æ„--OK,åºåˆ—åˆ™ error å¦‚ vector,string,deque ...
         else
             iter++;//
-    cout << " Ğ´Ñ­»·±éÀú iList,¸ù¾İÌõ¼şbadCheck,½øĞĞ²Ù×÷ iList.erase(...); \n";
+    cout << " å†™å¾ªç¯éå† iList,æ ¹æ®æ¡ä»¶badCheck,è¿›è¡Œæ“ä½œ iList.erase(...); \n";
     copy(iList.begin() ,iList.end() ,ostream_iterator<int>(cout ," ") );
     cout << "\n";
 
 
-    cout << " multiset<int>  --- erase ---¹ØÁªÊ½ÈİÆ÷ ---\n";
+    cout << " multiset<int>  --- erase ---å…³è”å¼å®¹å™¨ ---\n";
     multiset<int>   iMSet(iVec.begin() ,iVec.end() );
     for(int i=0;i<5;i++)
     {
@@ -175,7 +175,7 @@
     cout << " iMSet.erase(1999);\n";
     copy(iMSet.begin() ,iMSet.end() ,ostream_iterator<int>(cout ," ") );
     cout << "\n";
-    // ....ĞèÒª copy ËùÓĞ²»±»É¾³ıÔªËØ ...
+    // ....éœ€è¦ copy æ‰€æœ‰ä¸è¢«åˆ é™¤å…ƒç´  ...
     multiset<int>   goodValues;
     remove_copy_if(iMSet.begin() ,iMSet.end() ,inserter(goodValues ,goodValues.end()) ,
                    badValue<2000>() );
@@ -183,15 +183,15 @@
     cout << " iMSet.remove_copy_if(...); iMSet.swap(...)\n";
     copy(iMSet.begin() ,iMSet.end() ,ostream_iterator<int>(cout ," ") );
     cout << "\n";
-    // ...Ğ´Ñ­»·±éÀú iMSet £¬¸ù¾İÌõ¼şbadCheck £¬½øĞĞerase²Ù×÷  ...
+    // ...å†™å¾ªç¯éå† iMSet ï¼Œæ ¹æ®æ¡ä»¶badCheck ï¼Œè¿›è¡Œeraseæ“ä½œ  ...
     multiset<int>::iterator it = iMSet.begin();
     //badValue<2001>  badCheck;
     for(;it!=iMSet.end(); )
         if(badCheck(*it))
-            iMSet.erase(it++);//ºó×ºµİÔö £¬·ñÔòitÊ§Ğ§£¬×¢ÒâÁË £¡£¡£¡£¡
+            iMSet.erase(it++);//åç¼€é€’å¢ ï¼Œå¦åˆ™itå¤±æ•ˆï¼Œæ³¨æ„äº† ï¼ï¼ï¼ï¼
         else
             it++;//
-    cout << " Ğ´Ñ­»·±éÀú iMSet,¸ù¾İÌõ¼şbadCheck½øĞĞ²Ù×÷ iMSet.erase(...); \n";
+    cout << " å†™å¾ªç¯éå† iMSet,æ ¹æ®æ¡ä»¶badCheckè¿›è¡Œæ“ä½œ iMSet.erase(...); \n";
     copy(iMSet.begin() ,iMSet.end() ,ostream_iterator<int>(cout ," ") );
     cout << "\n";
 
@@ -199,14 +199,14 @@
 
     }
 
-//---Ìõ¿î10£ºÁË½â·ÖÅä×Ó(allocator)µÄÔ¼¶¨ºÍÏŞÖÆ ---------
+//---æ¡æ¬¾10ï¼šäº†è§£åˆ†é…å­(allocator)çš„çº¦å®šå’Œé™åˆ¶ ---------
 
-//---Ìõ¿î11£ºÀí½â×Ô¶¨Òå·ÖÅä×ÓµÄºÏÀíÓÃ·¨ ----------------
+//---æ¡æ¬¾11ï¼šç†è§£è‡ªå®šä¹‰åˆ†é…å­çš„åˆç†ç”¨æ³• ----------------
 
-//---Ìõ¿î12£ºÇĞÎğ¶Ô STL ÈİÆ÷µÄÏß³Ì°²È«ĞÔÓĞ²»ÇÒÊµ¼ÊµÄÒÀÀµ -------------------
+//---æ¡æ¬¾12ï¼šåˆ‡å‹¿å¯¹ STL å®¹å™¨çš„çº¿ç¨‹å®‰å…¨æ€§æœ‰ä¸ä¸”å®é™…çš„ä¾èµ– -------------------
 /*
     {
-     cout << "---Ìõ¿î12£ºÇĞÎğ¶Ô STL ÈİÆ÷µÄÏß³Ì°²È«ĞÔÓĞ²»ÇÒÊµ¼ÊµÄÒÀÀµ -----" << endl;
+     cout << "---æ¡æ¬¾12ï¼šåˆ‡å‹¿å¯¹ STL å®¹å™¨çš„çº¿ç¨‹å®‰å…¨æ€§æœ‰ä¸ä¸”å®é™…çš„ä¾èµ– -----" << endl;
     vector<int> iVec(10 ,999);
     {
         LockContainer< vector<int> > Lock(iVec);
@@ -231,10 +231,10 @@
     }
     cout << " All TestThread Run Over -------\n";
     }
-//---Ìõ¿î13£ºvector ºÍ string ÓÅÏÈÓÚ¶¯Ì¬·ÖÅäÊı×é -------
-    cout << " ---Ìõ¿î13£ºvector ºÍ string ÓÅÏÈÓÚ¶¯Ì¬·ÖÅäÊı×é ----\n";
-//---Ìõ¿î14£ºÊ¹ÓÃreserve À´±ÜÃâ²»±ØÒªµÄÖØĞÂ·ÖÅä --------
-    cout << " ---Ìõ¿î14£ºÊ¹ÓÃreserve À´±ÜÃâ²»±ØÒªµÄÖØĞÂ·ÖÅä -----\n";
+//---æ¡æ¬¾13ï¼švector å’Œ string ä¼˜å…ˆäºåŠ¨æ€åˆ†é…æ•°ç»„ -------
+    cout << " ---æ¡æ¬¾13ï¼švector å’Œ string ä¼˜å…ˆäºåŠ¨æ€åˆ†é…æ•°ç»„ ----\n";
+//---æ¡æ¬¾14ï¼šä½¿ç”¨reserve æ¥é¿å…ä¸å¿…è¦çš„é‡æ–°åˆ†é… --------
+    cout << " ---æ¡æ¬¾14ï¼šä½¿ç”¨reserve æ¥é¿å…ä¸å¿…è¦çš„é‡æ–°åˆ†é… -----\n";
     vector<int>    iVec1;
     for(int i=0;i<1000;i++)
     {
@@ -254,10 +254,10 @@
         iVec2.push_back(i);
     }   
     cout << " now iVec2.capacity()==" << iVec2.capacity() << endl;
-//---Ìõ¿î15£º×¢Òâstring µÄ¶àÑùĞÔ()ÊµÏÖ¶àÑùĞÔ  ----------- °üº¬£º
-// 1 .´óĞ¡---size £¬2 .ÈİÁ¿---capacity £¬3 .·ÖÅä×Ó---alloctor £¬4 .ÒıÓÃ¼ÆÊı ----
-    cout << " ---Ìõ¿î15£º×¢Òâstring µÄ¶àÑùĞÔ()ÊµÏÖ¶àÑùĞÔ  ----------- °üº¬£º\n"  
-	 << " 1 .´óĞ¡---size £¬2 .ÈİÁ¿---capacity £¬3 .·ÖÅä×Ó---alloctor £¬4 .ÒıÓÃ¼ÆÊı ----\n";
+//---æ¡æ¬¾15ï¼šæ³¨æ„string çš„å¤šæ ·æ€§()å®ç°å¤šæ ·æ€§  ----------- åŒ…å«ï¼š
+// 1 .å¤§å°---size ï¼Œ2 .å®¹é‡---capacity ï¼Œ3 .åˆ†é…å­---alloctor ï¼Œ4 .å¼•ç”¨è®¡æ•° ----
+    cout << " ---æ¡æ¬¾15ï¼šæ³¨æ„string çš„å¤šæ ·æ€§()å®ç°å¤šæ ·æ€§  ----------- åŒ…å«ï¼š\n"  
+	 << " 1 .å¤§å°---size ï¼Œ2 .å®¹é‡---capacity ï¼Œ3 .åˆ†é…å­---alloctor ï¼Œ4 .å¼•ç”¨è®¡æ•° ----\n";
     string  str("11111");
     int     strSize = sizeof(str);
     cout <<" string  str(\"11111\"); sizeof(str) = " << strSize << endl;
@@ -266,13 +266,13 @@
     for(;strSize>0;strSize--)
         cout << *pstr << ' ' ;
     cout << endl;   
-//---Ìõ¿î16£ºÁË½âÈçºÎ°Ñ vector ºÍ string Êı¾İ´«¸ø ¾ÍµÄAPI -----
+//---æ¡æ¬¾16ï¼šäº†è§£å¦‚ä½•æŠŠ vector å’Œ string æ•°æ®ä¼ ç»™ å°±çš„API -----
 // -----string::c_str() ,vector ,&Vec[0] ----------
     cout << " \n";
 
-//---Ìõ¿î17£ºÊ¹ÓÃ ¡°swap¼¼ÇÉ¡±³ıÈ¥¶àÓàµÄÈİÁ¿ vector ,string --------------
-    cout << " ---Ìõ¿î17£ºÊ¹ÓÃ ¡°swap¼¼ÇÉ¡±³ıÈ¥¶àÓàµÄÈİÁ¿ vector ,string -------\n";
-    cout << " swap ¼¼ÇÉ È¥³ı iVec1 ¶àÓàµÄÈİÁ¿,¼´ vector<int> (iVec1).swap(iVec1)  " << endl;
+//---æ¡æ¬¾17ï¼šä½¿ç”¨ â€œswapæŠ€å·§â€é™¤å»å¤šä½™çš„å®¹é‡ vector ,string --------------
+    cout << " ---æ¡æ¬¾17ï¼šä½¿ç”¨ â€œswapæŠ€å·§â€é™¤å»å¤šä½™çš„å®¹é‡ vector ,string -------\n";
+    cout << " swap æŠ€å·§ å»é™¤ iVec1 å¤šä½™çš„å®¹é‡,å³ vector<int> (iVec1).swap(iVec1)  " << endl;
     cout << " \n";
     cout << " before iVec1.capacity()==" << iVec1.capacity()
          << " , iVec1.size()==" << iVec1.size() << endl;
@@ -280,9 +280,9 @@
     cout << " now iVec1.capacity()==" << iVec1.capacity()
          << " , iVec1.size()==" << iVec1.size() << endl;
 
-//---Ìõ¿î18£º±ÜÃâÊ¹ÓÃ vector<bool> £¬Ê¹ÓÃ deque<bool> ,bitset Ìæ´ú -----
+//---æ¡æ¬¾18ï¼šé¿å…ä½¿ç”¨ vector<bool> ï¼Œä½¿ç”¨ deque<bool> ,bitset æ›¿ä»£ -----
     {
-    cout << " ---Ìõ¿î18£º±ÜÃâÊ¹ÓÃ vector<bool> £¬Ê¹ÓÃ deque<bool> ,bitset Ìæ´ú -----\n";
+    cout << " ---æ¡æ¬¾18ï¼šé¿å…ä½¿ç”¨ vector<bool> ï¼Œä½¿ç”¨ deque<bool> ,bitset æ›¿ä»£ -----\n";
     vector<bool>    bVec;
     time_t  t;
     srand(time(&t));
@@ -318,11 +318,11 @@
     cout << endl;
     }
 /*
-//---Ìõ¿î19£ºÀí½âÏàµÈ£¨equality£©ºÍµÈ¼Û£¨equivalence£©µÄÇø±ğ ------
-    cout << " ---Ìõ¿î19£ºÀí½âÏàµÈ£¨equality£©ºÍµÈ¼Û£¨equivalence£©µÄÇø±ğ ------\n";
-//---Ìõ¿î20£ºÎª°üº¬Ö¸ÕëµÄ¹ØÁªÈİÆ÷£¨ÒàÆäËûÈİÆ÷£©Ö¸¶¨±È½ÏÀàĞÍ £¡-----
+//---æ¡æ¬¾19ï¼šç†è§£ç›¸ç­‰ï¼ˆequalityï¼‰å’Œç­‰ä»·ï¼ˆequivalenceï¼‰çš„åŒºåˆ« ------
+    cout << " ---æ¡æ¬¾19ï¼šç†è§£ç›¸ç­‰ï¼ˆequalityï¼‰å’Œç­‰ä»·ï¼ˆequivalenceï¼‰çš„åŒºåˆ« ------\n";
+//---æ¡æ¬¾20ï¼šä¸ºåŒ…å«æŒ‡é’ˆçš„å…³è”å®¹å™¨ï¼ˆäº¦å…¶ä»–å®¹å™¨ï¼‰æŒ‡å®šæ¯”è¾ƒç±»å‹ ï¼-----
     {
-    cout << " ---Ìõ¿î20£ºÎª°üº¬Ö¸ÕëµÄ¹ØÁªÈİÆ÷£¨ÒàÆäËûÈİÆ÷£©Ö¸¶¨±È½ÏÀàĞÍ £¡-----\n";
+    cout << " ---æ¡æ¬¾20ï¼šä¸ºåŒ…å«æŒ‡é’ˆçš„å…³è”å®¹å™¨ï¼ˆäº¦å…¶ä»–å®¹å™¨ï¼‰æŒ‡å®šæ¯”è¾ƒç±»å‹ ï¼-----\n";
     set<string*>    strSet;
     strSet.insert(new string("33333"));
     strSet.insert(new string("22222"));
@@ -348,13 +348,13 @@
     //copy(strSet.begin() ,strSet.end() ,ostream_iterator<string*>(cout ,"\n"));// ---print string address !!!
     //cout << endl;
     }
-//---Ìõ¿î21£º×ÜÊÇÈÃ±È½Ïº¯ÊıÔÚµÈÖµÇé¿öÏÂ·µ»Øfalse ------------
-//---±È½Ïº¯ÊıµÄ·µ»ØÖµ±íÃ÷µÄÊÇ°´ÕÕ¸Äº¯Êı¶¨ÒåµÄÅÅÁĞË³Ğò£¬Ò»¸öÖµÊÇ·ñÔÚÁíÒ»¸öÖ®Ç° ----
-    cout << " ---Ìõ¿î21£º×ÜÊÇÈÃ±È½Ïº¯ÊıÔÚµÈÖµÇé¿öÏÂ·µ»Øfalse --------\n" 
-	 << " ---±È½Ïº¯ÊıµÄ·µ»ØÖµ±íÃ÷µÄÊÇ°´ÕÕ¸Äº¯Êı¶¨ÒåµÄÅÅÁĞË³Ğò£¬Ò»¸öÖµÊÇ·ñÔÚÁíÒ»¸öÖ®Ç° ----\n";
-//---Ìõ¿î22£ºÖ±½ÓÇĞÎğĞŞ¸Äset»òÊÇ multiset ÖĞµÄ¼üÖµ -----
+//---æ¡æ¬¾21ï¼šæ€»æ˜¯è®©æ¯”è¾ƒå‡½æ•°åœ¨ç­‰å€¼æƒ…å†µä¸‹è¿”å›false ------------
+//---æ¯”è¾ƒå‡½æ•°çš„è¿”å›å€¼è¡¨æ˜çš„æ˜¯æŒ‰ç…§æ”¹å‡½æ•°å®šä¹‰çš„æ’åˆ—é¡ºåºï¼Œä¸€ä¸ªå€¼æ˜¯å¦åœ¨å¦ä¸€ä¸ªä¹‹å‰ ----
+    cout << " ---æ¡æ¬¾21ï¼šæ€»æ˜¯è®©æ¯”è¾ƒå‡½æ•°åœ¨ç­‰å€¼æƒ…å†µä¸‹è¿”å›false --------\n" 
+	 << " ---æ¯”è¾ƒå‡½æ•°çš„è¿”å›å€¼è¡¨æ˜çš„æ˜¯æŒ‰ç…§æ”¹å‡½æ•°å®šä¹‰çš„æ’åˆ—é¡ºåºï¼Œä¸€ä¸ªå€¼æ˜¯å¦åœ¨å¦ä¸€ä¸ªä¹‹å‰ ----\n";
+//---æ¡æ¬¾22ï¼šç›´æ¥åˆ‡å‹¿ä¿®æ”¹setæˆ–æ˜¯ multiset ä¸­çš„é”®å€¼ -----
     {
-    cout << " ---Ìõ¿î22£ºÖ±½ÓÇĞÎğĞŞ¸Äset»òÊÇ multiset ÖĞµÄ¼üÖµ -----\n";
+    cout << " ---æ¡æ¬¾22ï¼šç›´æ¥åˆ‡å‹¿ä¿®æ”¹setæˆ–æ˜¯ multiset ä¸­çš„é”®å€¼ -----\n";
     EmpIDSet    eis;
     eis.insert(Employee("hjk" ,"33333" ,333));
     eis.insert(Employee("hjk" ,"11111" ,222));
@@ -390,22 +390,22 @@
                  << " ,gettitle() = " << it->gettitle()<< endl;
     }  
     }
-//---Ìõ¿î23£º¿¼ÂÇÓÃÅÅĞòµÄvectorÌæ´ú¹ØÁªÈİÆ÷ --------
-    cout << " ---Ìõ¿î23£º¿¼ÂÇÓÃÅÅĞòµÄvectorÌæ´ú¹ØÁªÈİÆ÷ -------\n";
-//---Ìõ¿î24£ºµ±Ğ§ÂÊÖÁ¹ØÖØÒªÊ±£¬ÇëÔÚmap::operator[] ºÍ map::insert Ö®¼ä½÷É÷×ö³öÑ¡Ôñ-------
-    cout << " ---Ìõ¿î24£ºµ±Ğ§ÂÊÖÁ¹ØÖØÒªÊ±£¬ÇëÔÚmap::operator[] ºÍ map::insert Ö®¼ä½÷É÷×ö³öÑ¡Ôñ----\n";
+//---æ¡æ¬¾23ï¼šè€ƒè™‘ç”¨æ’åºçš„vectoræ›¿ä»£å…³è”å®¹å™¨ --------
+    cout << " ---æ¡æ¬¾23ï¼šè€ƒè™‘ç”¨æ’åºçš„vectoræ›¿ä»£å…³è”å®¹å™¨ -------\n";
+//---æ¡æ¬¾24ï¼šå½“æ•ˆç‡è‡³å…³é‡è¦æ—¶ï¼Œè¯·åœ¨map::operator[] å’Œ map::insert ä¹‹é—´è°¨æ…åšå‡ºé€‰æ‹©-------
+    cout << " ---æ¡æ¬¾24ï¼šå½“æ•ˆç‡è‡³å…³é‡è¦æ—¶ï¼Œè¯·åœ¨map::operator[] å’Œ map::insert ä¹‹é—´è°¨æ…åšå‡ºé€‰æ‹©----\n";
 
 
-//---Ìõ¿î25£ºÊìÏ¤·Ç±ê×¼µÄ¹şÏ£ÈİÆ÷--hash_container ------------------
-    cout << " ---Ìõ¿î25£ºÊìÏ¤·Ç±ê×¼µÄ¹şÏ£ÈİÆ÷--hash_container ------\n";
+//---æ¡æ¬¾25ï¼šç†Ÿæ‚‰éæ ‡å‡†çš„å“ˆå¸Œå®¹å™¨--hash_container ------------------
+    cout << " ---æ¡æ¬¾25ï¼šç†Ÿæ‚‰éæ ‡å‡†çš„å“ˆå¸Œå®¹å™¨--hash_container ------\n";
 /*
-//---Ìõ¿î26£ºiterator ÓÅÏÈÓÚconst_iterator¡¢reverse_iterator¡¢ÒÔ¼°const_reverse_iterator
-// --- iterator -> (ÒşÊ½×ª»»)const_iterator
-    cout << " ---Ìõ¿î26£ºiterator ÓÅÏÈÓÚconst_iterator¡¢reverse_iterator¡¢ÒÔ¼°const_reverse_iterator\n" 
-	 << " --- iterator -> (ÒşÊ½×ª»»)const_iterator\n";
-//---Ìõ¿î27£ºÊ¹ÓÃ distence ºÍ advance ½«ÈİÆ÷µÄconst_iterator×ª»» iterator
+//---æ¡æ¬¾26ï¼šiterator ä¼˜å…ˆäºconst_iteratorã€reverse_iteratorã€ä»¥åŠconst_reverse_iterator
+// --- iterator -> (éšå¼è½¬æ¢)const_iterator
+    cout << " ---æ¡æ¬¾26ï¼šiterator ä¼˜å…ˆäºconst_iteratorã€reverse_iteratorã€ä»¥åŠconst_reverse_iterator\n" 
+	 << " --- iterator -> (éšå¼è½¬æ¢)const_iterator\n";
+//---æ¡æ¬¾27ï¼šä½¿ç”¨ distence å’Œ advance å°†å®¹å™¨çš„const_iteratorè½¬æ¢ iterator
     {
-    cout << " ---Ìõ¿î27£ºÊ¹ÓÃ distence ºÍ advance ½«ÈİÆ÷µÄconst_iterator×ª»» iterator\n";
+    cout << " ---æ¡æ¬¾27ï¼šä½¿ç”¨ distence å’Œ advance å°†å®¹å™¨çš„const_iteratorè½¬æ¢ iterator\n";
     typedef deque<int>  IntDeque;
     typedef IntDeque::iterator  Iter;   
     typedef IntDeque::const_iterator  ConstIter;
@@ -425,9 +425,9 @@
     advance(itTemp ,distance<ConstIter>(itTemp ,cit));// --- perfect ------  
     cout << "*itTemp = " << *itTemp <<endl;
     }
-//---Ìõ¿î28 :ÕıÈ·Àí½âÓĞ reverse_iterator µÄ base()³ÉÔ±º¯ÊıËù²úÉúµÄiteratorµÄÓÃ·¨
+//---æ¡æ¬¾28 :æ­£ç¡®ç†è§£æœ‰ reverse_iterator çš„ base()æˆå‘˜å‡½æ•°æ‰€äº§ç”Ÿçš„iteratorçš„ç”¨æ³•
     {
-    cout << " ---Ìõ¿î28 :ÕıÈ·Àí½âÓĞ reverse_iterator µÄ base()³ÉÔ±º¯ÊıËù²úÉúµÄiteratorµÄÓÃ·¨\n";
+    cout << " ---æ¡æ¬¾28 :æ­£ç¡®ç†è§£æœ‰ reverse_iterator çš„ base()æˆå‘˜å‡½æ•°æ‰€äº§ç”Ÿçš„iteratorçš„ç”¨æ³•\n";
     vector<int> iVec;
     iVec.reserve(5);
     for(int i=0;i<5;i++)
@@ -435,32 +435,32 @@
     vector<int>::reverse_iterator rit = find(iVec.rbegin() ,iVec.rend() ,3);
     //iVec.erase(--rit.base()); //error  [C++ Error] : E2277 Lvalue required
     //iVec.erase(rit);// [C++ Error] E2285 Could not find a match for 'vector<int,allocator<int> >::erase(reverse_iterator<int *>)'
-    iVec.erase((++rit).base());// É¾³ı rite ËùÖ¸µÄÔªËØ ----- OK
+    iVec.erase((++rit).base());// åˆ é™¤ rite æ‰€æŒ‡çš„å…ƒç´  ----- OK
     cout << "iVec.erase((++rit).base()); ---- erase: 3 " << endl;
     copy(iVec.begin() ,iVec.end() ,outite );
     cout << endl;  
     }
-//---Ìõ¿î29 :¶ÔÓÚÖğ¸ö×Ö·ûµÄÊäÈëÇë¿¼ÂÇÊ¹ÓÃ istreambuf_iterator £¬¶ÔÓÚÖğ¸ö×Ö·ûµÄÊä³öÇë¿¼ÂÇÊ¹ÓÃ osstreambuf_iterator £¬
+//---æ¡æ¬¾29 :å¯¹äºé€ä¸ªå­—ç¬¦çš„è¾“å…¥è¯·è€ƒè™‘ä½¿ç”¨ istreambuf_iterator ï¼Œå¯¹äºé€ä¸ªå­—ç¬¦çš„è¾“å‡ºè¯·è€ƒè™‘ä½¿ç”¨ osstreambuf_iterator ï¼Œ
     {
-    cout << " ---Ìõ¿î29 :¶ÔÓÚÖğ¸ö×Ö·ûµÄÊäÈëÇë¿¼ÂÇÊ¹ÓÃ istreambuf_iterator £¬¶ÔÓÚÖğ¸ö×Ö·ûµÄÊä³öÇë¿¼ÂÇÊ¹ÓÃ osstreambuf_iterator \n";
+    cout << " ---æ¡æ¬¾29 :å¯¹äºé€ä¸ªå­—ç¬¦çš„è¾“å…¥è¯·è€ƒè™‘ä½¿ç”¨ istreambuf_iterator ï¼Œå¯¹äºé€ä¸ªå­—ç¬¦çš„è¾“å‡ºè¯·è€ƒè™‘ä½¿ç”¨ osstreambuf_iterator \n";
     ifstream    fin("text.txt");
-    //----¼ì²â¸ñÊ½»¯ÊäÈë £¬Ôö¼Ó¶ÁÈ¡Á÷µÄÊ±¼ä¿ªÏú ºöÂÔ¿Õ¸ñ£¬ »Ø³µ £¬Tab ------
+    //----æ£€æµ‹æ ¼å¼åŒ–è¾“å…¥ ï¼Œå¢åŠ è¯»å–æµçš„æ—¶é—´å¼€é”€ å¿½ç•¥ç©ºæ ¼ï¼Œ å›è½¦ ï¼ŒTab ------
     //string  FileData((istream_iterator<char>(fin)) ,istream_iterator<char>());
     //cout << FileData <<endl;
-    //------·Ç¸ñÊ½»¯ÊäÈë £¬¸ßĞ§ £¬Ô­Ñù¶ÁÈ¡ ---------
+    //------éæ ¼å¼åŒ–è¾“å…¥ ï¼Œé«˜æ•ˆ ï¼ŒåŸæ ·è¯»å– ---------
     string  FileData_((istreambuf_iterator<char>(fin)) ,istreambuf_iterator<char>());// --- OK ,perfect !
     string  FileData_(istreambuf_iterator<char>(fin) ,istreambuf_iterator<char>()); // --- error
-// ---Ìõ¿î6£ºµ±ĞÄ C++ ±àÒëÆ÷·³ÈËµÄ·ÖÎö»úÖÆ £¡(istreambuf_iterator<char>(fin))¼ÓÀ¨ºÅ £¡-------
-    //above £º[Linker Error] Unresolved external 'FileData_(_STL::istreambuf_iterator<char, _STL::char_traits<char> >, _STL::istreambuf_iterator<char, _STL::char_traits<char> > (*)())'
+// ---æ¡æ¬¾6ï¼šå½“å¿ƒ C++ ç¼–è¯‘å™¨çƒ¦äººçš„åˆ†ææœºåˆ¶ ï¼(istreambuf_iterator<char>(fin))åŠ æ‹¬å· ï¼-------
+    //above ï¼š[Linker Error] Unresolved external 'FileData_(_STL::istreambuf_iterator<char, _STL::char_traits<char> >, _STL::istreambuf_iterator<char, _STL::char_traits<char> > (*)())'
 //referenced from F:\C++\EFFECTIVE STL\UNITMAIN.OBJ
     cout << FileData_ <<endl;
 
     }
 
 /*
-//---Ìõ¿î30£ºÈ·±£Ä¿±êÇø¼ä×ã¹»´ó ----------------------
+//---æ¡æ¬¾30ï¼šç¡®ä¿ç›®æ ‡åŒºé—´è¶³å¤Ÿå¤§ ----------------------
     {
-    cout << "---Ìõ¿î30£ºÈ·±£Ä¿±êÇø¼ä×ã¹»´ó ------" << endl;
+    cout << "---æ¡æ¬¾30ï¼šç¡®ä¿ç›®æ ‡åŒºé—´è¶³å¤Ÿå¤§ ------" << endl;
     vector<int> iVec(3 ,1);
     cout << " vector<int> iVec(3 ,1); -----print -----" << endl;
     copy(iVec.begin() ,iVec.end() ,outite );
@@ -481,7 +481,7 @@
     cout << " Now print iList : -----------\n ";
     copy(iList.begin() ,iList.end() ,outite );
     cout << endl;
-    transform(iList.begin() ,iList.end() ,front_inserter(iList) ,transmogrify ); // ---½á¹ûÆæ¹Ö -----
+    transform(iList.begin() ,iList.end() ,front_inserter(iList) ,transmogrify ); // ---ç»“æœå¥‡æ€ª -----
     cout << " After transform(iList.begin() ,iList.end() ,front_inserter(iList) ,transmogrify );" << endl;
     cout << " Now print iList : -----------\n ";
     copy(iList.begin() ,iList.end() ,outite );
@@ -496,9 +496,9 @@
     copy(iVec.begin() ,iVec.end() ,outite );
     cout << endl;   
     } 
-//---Ìõ¿î31£ºÁË½â¸÷ÖÖÓëÅÅĞòÓĞ¹ØµÄÑ¡Ôñ ----------------
+//---æ¡æ¬¾31ï¼šäº†è§£å„ç§ä¸æ’åºæœ‰å…³çš„é€‰æ‹© ----------------
     {
-     cout << "---Ìõ¿î31£ºÁË½â¸÷ÖÖÓëÅÅĞòÓĞ¹ØµÄÑ¡Ôñ -----" << endl;
+     cout << "---æ¡æ¬¾31ï¼šäº†è§£å„ç§ä¸æ’åºæœ‰å…³çš„é€‰æ‹© -----" << endl;
      vector<int>    iVec;
      for(int i=0;i<10;i++)
         iVec.push_back(rand()%100);
@@ -536,11 +536,11 @@
     cout << " *cit = " << *cit << endl;
 
     }
-//---Ìõ¿î32,33£º ¼ûÉÏ£¬²âÊÔ¹ı----------------------------------
+//---æ¡æ¬¾32,33ï¼š è§ä¸Šï¼Œæµ‹è¯•è¿‡----------------------------------
 /*
-//---Ìõ¿î32£ºÈç¹ûÈ·ÊµĞèÒªÉ¾³ıÔªËØ £¬ÔòĞèÒªÔÚremoveÕâÀàËã·¨Ö®ºóµ÷ÓÃ erase-----
+//---æ¡æ¬¾32ï¼šå¦‚æœç¡®å®éœ€è¦åˆ é™¤å…ƒç´  ï¼Œåˆ™éœ€è¦åœ¨removeè¿™ç±»ç®—æ³•ä¹‹åè°ƒç”¨ erase-----
     {
-    cout << " ---Ìõ¿î32£ºÈç¹ûÈ·ÊµĞèÒªÉ¾³ıÔªËØ £¬ÔòĞèÒªÔÚremoveÕâÀàËã·¨Ö®ºóµ÷ÓÃ erase---\n";
+    cout << " ---æ¡æ¬¾32ï¼šå¦‚æœç¡®å®éœ€è¦åˆ é™¤å…ƒç´  ï¼Œåˆ™éœ€è¦åœ¨removeè¿™ç±»ç®—æ³•ä¹‹åè°ƒç”¨ erase---\n";
     //int     i = 0;
     vector<int> iVec;      // (10 ,i++)
     iVec.reserve(10);
@@ -555,8 +555,8 @@
     cout << " iVec.size() : " << iVec.size() << endl;
     copy(iVec.begin() ,iVec.end() ,outite );
     cout << endl;
-//---Ìõ¿î33£º¶ÔÓÚ°üº¬Ö¸ÕëµÄÈİÆ÷Ê¹ÓÃremoveÕâÀàËã·¨Ê±ÒªÌØ±ğĞ¡ĞÄ£¡ -----------
-    cout << " ---Ìõ¿î33£º¶ÔÓÚ°üº¬Ö¸ÕëµÄÈİÆ÷Ê¹ÓÃremoveÕâÀàËã·¨Ê±ÒªÌØ±ğĞ¡ĞÄ£¡ ----\n";
+//---æ¡æ¬¾33ï¼šå¯¹äºåŒ…å«æŒ‡é’ˆçš„å®¹å™¨ä½¿ç”¨removeè¿™ç±»ç®—æ³•æ—¶è¦ç‰¹åˆ«å°å¿ƒï¼ -----------
+    cout << " ---æ¡æ¬¾33ï¼šå¯¹äºåŒ…å«æŒ‡é’ˆçš„å®¹å™¨ä½¿ç”¨removeè¿™ç±»ç®—æ³•æ—¶è¦ç‰¹åˆ«å°å¿ƒï¼ ----\n";
     time_t  t;
     srand(time(&t));
     vector<Widget*> WidgetVec;
@@ -580,15 +580,15 @@
     }
     }   */
 
-//---Ìõ¿î34£ºÁË½âÄÄĞ©STLËã·¨ÒªÇóÊ¹ÓÃÅÅĞòÇø¼ä×÷Îª²ÎÊı ----
+//---æ¡æ¬¾34ï¼šäº†è§£å“ªäº›STLç®—æ³•è¦æ±‚ä½¿ç”¨æ’åºåŒºé—´ä½œä¸ºå‚æ•° ----
 // --- binary_search , lower_bound ,upper_bound ,equal_range ,
 // --- set_union ,set_intersection ,set_difference ,set_symmetri_difference ,
-// --- merge ,inplace_merge ,includes  ,--- ´îÅäÔËÓÃ  unique£¬unique_copy¡£
+// --- merge ,inplace_merge ,includes  ,--- æ­é…è¿ç”¨  uniqueï¼Œunique_copyã€‚
     {
-    cout << "---Ìõ¿î34£ºÁË½âÄÄĞ©Ëã·¨ÒªÇóÊ¹ÓÃÅÅĞòÇø¼ä×÷Îª²ÎÊı ----\n"
+    cout << "---æ¡æ¬¾34ï¼šäº†è§£å“ªäº›ç®—æ³•è¦æ±‚ä½¿ç”¨æ’åºåŒºé—´ä½œä¸ºå‚æ•° ----\n"
          << " --- binary_search , lower_bound ,upper_bound ,equal_range ,\n"
          << " --- set_union ,set_intersection ,set_difference ,set_symmetri_difference ,\n"
-         << " --- merge ,inplace_merge ,includes  ,--- ´îÅäÔËÓÃ  unique£¬unique_copy.\n" ;
+         << " --- merge ,inplace_merge ,includes  ,--- æ­é…è¿ç”¨  uniqueï¼Œunique_copy.\n" ;
 
     vector<int>    iVec;
     for(int i=0;i<10;i++)
@@ -604,7 +604,7 @@
     cout << " sort(iVec.begin() ,iVec.end(),greater<int>());\n -----print iVec-----" << endl;
     copy(iVec.begin() ,iVec.end() ,outite );// ostream_iterator<int>(cout ," ");
     cout << endl;
-    cout << " ×¢Òâ£ºsort ºÍ search ±È½Ïº¯ÊıÓ¦¸Ã±£³ÖÒ»Ö± Ê¾ÀıÈçÏÂ£º------\n";
+    cout << " æ³¨æ„ï¼šsort å’Œ search æ¯”è¾ƒå‡½æ•°åº”è¯¥ä¿æŒä¸€ç›´ ç¤ºä¾‹å¦‚ä¸‹ï¼š------\n";
     bool ValueExists = binary_search(iVec.begin() ,iVec.end() ,iVec[2] );//,less<int>()
     cout << " bool ValueExists = binary_search(iVec.begin() ,iVec.end() ,iVec[2])\n"
          << " //,less<int>()--- error: sort as greater<int>() ,but search as less<int> \n";
@@ -618,10 +618,10 @@
     }
 
 /*
-//---Ìõ¿î35£ºÍ¨¹ı mismatch »ò lexicographical_compare ÊµÏÖ¼òµ¥µÄºöÂÔ´óĞ¡Ğ´
-//-----------×Ö·û´®±È½Ï ----------------------
+//---æ¡æ¬¾35ï¼šé€šè¿‡ mismatch æˆ– lexicographical_compare å®ç°ç®€å•çš„å¿½ç•¥å¤§å°å†™
+//-----------å­—ç¬¦ä¸²æ¯”è¾ƒ ----------------------
     {
-    cout << "---Ìõ¿î35£ºÍ¨¹ı mismatch »ò lexicographical_compare ÊµÏÖ¼òµ¥µÄºöÂÔ´óĞ¡Ğ´---" << endl;
+    cout << "---æ¡æ¬¾35ï¼šé€šè¿‡ mismatch æˆ– lexicographical_compare å®ç°ç®€å•çš„å¿½ç•¥å¤§å°å†™---" << endl;
     cout << " ciStringCompare(\"123456\" ,\"123455\") = " << ciStringCompare("123456" ,"123456") << endl;
     cout << " ciStringCompare(\"123455\" ,\"123456\") = " << ciStringCompare("123455" ,"123456") << endl;
     cout << " ciStringCompare(\"123456\" ,\"123455\") = " << ciStringCompare("123456" ,"123455") << endl;
@@ -631,9 +631,9 @@
     cout << " ciStringCompare_(\"123456\" ,\"123455\") = " << ciStringCompare_("123456" ,"123455") << endl;
     }
 
-//---Ìõ¿î36£ºÀí½âcopy_if Ëã·¨µÄÕıÈ·ÊµÏÖ £¬STLÃ»ÓĞ°üº¬copy_ifµÄÊµÏÖ--------------
+//---æ¡æ¬¾36ï¼šç†è§£copy_if ç®—æ³•çš„æ­£ç¡®å®ç° ï¼ŒSTLæ²¡æœ‰åŒ…å«copy_ifçš„å®ç°--------------
     {
-    cout << "---Ìõ¿î36£ºÀí½âcopy_if Ëã·¨µÄÕıÈ·ÊµÏÖ £¬STLÃ»ÓĞ°üº¬copy_ifµÄÊµÏÖ-----" << endl;
+    cout << "---æ¡æ¬¾36ï¼šç†è§£copy_if ç®—æ³•çš„æ­£ç¡®å®ç° ï¼ŒSTLæ²¡æœ‰åŒ…å«copy_ifçš„å®ç°-----" << endl;
     vector<int>    iVec;
     for(int i=0;i<10;i++)
         iVec.push_back(rand()%100);
@@ -653,9 +653,9 @@
 
     }
 
-//---Ìõ¿î37£ºÊ¹ÓÃaccumulate »òÊÇ for_each ½øĞĞÇø¼äÍ³¼Æ ---
+//---æ¡æ¬¾37ï¼šä½¿ç”¨accumulate æˆ–æ˜¯ for_each è¿›è¡ŒåŒºé—´ç»Ÿè®¡ ---
     {
-    cout << "---Ìõ¿î37£ºÊ¹ÓÃaccumulate »òÊÇ for_each ½øĞĞÇø¼äÍ³¼Æ ---" <<endl;
+    cout << "---æ¡æ¬¾37ï¼šä½¿ç”¨accumulate æˆ–æ˜¯ for_each è¿›è¡ŒåŒºé—´ç»Ÿè®¡ ---" <<endl;
     double  dArray[] = { 0.1 ,0.2 ,0.3 ,0.4 ,0.5 ,0.6 ,0.7 ,0.8 ,0.9 ,1.0 };
     list<double>    dList(dArray ,dArray+sizeof(dArray)/sizeof(double));
     cout << " Initatile list<double> dList ----print ----" << endl;
@@ -689,8 +689,8 @@
     for(int i=0;i<5;i++)
         pList.push_back(dPoint(1.1*i ,2.2*i));
     copy(pList.begin() ,pList.end() ,ostream_iterator<dPoint>(cout ," "));
-    // --- ´«¸øaccumulateº¯Êı²»ÔÊĞíÓĞ¸±×÷ÓÃ £¬ËùÒÔ´Ó¼¼ÊõÉÏ½²ÒÔÏÂ½á¹û»áÊÇ²»¿ÉÔ¤ÁÏ----
-    //---- 1 ----£¿£¿£¿£¿£¿£¿£¿£¿£¿----------
+    // --- ä¼ ç»™accumulateå‡½æ•°ä¸å…è®¸æœ‰å‰¯ä½œç”¨ ï¼Œæ‰€ä»¥ä»æŠ€æœ¯ä¸Šè®²ä»¥ä¸‹ç»“æœä¼šæ˜¯ä¸å¯é¢„æ–™----
+    //---- 1 ----ï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿ----------
     dPoint  avg = accumulate(pList.begin() ,pList.end() ,dPoint(0.0 ,0.0),PointAverage());
     cout << " dPoint  avg = accumulate(pList.begin() ,pList.end() ,dPoint(0.0 ,0.0),PointAverage());\n";
     cout << " avg = " << avg << endl;
@@ -699,17 +699,17 @@
     cout << " dPoint  avg = for_each(pList.begin() ,pList.end() ,PointAverage_()).result();\n";
     cout << " avg = " << avg << endl;  
     }
-//---Ìõ¿î38£º×ñÑ­°´Öµ´«µİµÄÔ­ÔòÉè¼Æº¯Êı×ÓÀà ----
-    cout << " ---Ìõ¿î38£º×ñÑ­°´Öµ´«µİµÄÔ­ÔòÉè¼Æº¯Êı×ÓÀà ----\n";
+//---æ¡æ¬¾38ï¼šéµå¾ªæŒ‰å€¼ä¼ é€’çš„åŸåˆ™è®¾è®¡å‡½æ•°å­ç±» ----
+    cout << " ---æ¡æ¬¾38ï¼šéµå¾ªæŒ‰å€¼ä¼ é€’çš„åŸåˆ™è®¾è®¡å‡½æ•°å­ç±» ----\n";
     BPFC1<int>  *bpfc1 = new BPFC1<int>() ;
     BPFC2<int>  *bpfc2 = new BPFC2<int>() ;
     vector<int> iVec(10 ,99);
     for_each(iVec.begin() ,iVec.end() ,GoodFunctor<int>(bpfc1) ); 
     for_each(iVec.begin() ,iVec.end() ,GoodFunctor<int>(bpfc2) );
 
-//---Ìõ¿î39£ºÈ·±£ÅĞ±ğÊ½ÊÇ¡°´¿º¯Êı¡± ---
+//---æ¡æ¬¾39ï¼šç¡®ä¿åˆ¤åˆ«å¼æ˜¯â€œçº¯å‡½æ•°â€ ---
     {  
-    cout << " ---Ìõ¿î39£ºÈ·±£ÅĞ±ğÊ½ÊÇ¡°´¿º¯Êı¡± ---·´Àı £º\n";
+    cout << " ---æ¡æ¬¾39ï¼šç¡®ä¿åˆ¤åˆ«å¼æ˜¯â€œçº¯å‡½æ•°â€ ---åä¾‹ ï¼š\n";
     vector<int> iVec;
     iVec.reserve(12);
     for(unsigned int i=0;i<iVec.capacity();i++)
@@ -725,39 +725,39 @@
     cout << endl;
     }
 
-//---Ìõ¿î40£ºÈôÒ»¸öÀàÊÇº¯Êı×Ó£¬ÔòÓ¦Ê¹Ëü¿ÉÅä½Ó ----
-    cout << " ---Ìõ¿î40£ºÈôÒ»¸öÀàÊÇº¯Êı×Ó£¬ÔòÓ¦Ê¹Ëü¿ÉÅä½Ó ----\n";
+//---æ¡æ¬¾40ï¼šè‹¥ä¸€ä¸ªç±»æ˜¯å‡½æ•°å­ï¼Œåˆ™åº”ä½¿å®ƒå¯é…æ¥ ----
+    cout << " ---æ¡æ¬¾40ï¼šè‹¥ä¸€ä¸ªç±»æ˜¯å‡½æ•°å­ï¼Œåˆ™åº”ä½¿å®ƒå¯é…æ¥ ----\n";
 //  template <typename T>
 //  class Functor1 : public unary_function<T ,bool> {// ...}
 //  template <typename T1 ,typename T2>
 //  class Functor2 : public binary_function<T1 ,T2 ,bool> {// ...}
 
 //---------------------------------------------------------------------------
-//---Ìõ¿î41£ºÀí½âptr_fun £¬mem_fun £¬ºÍmem_fun_refµÄÓÉÀ´ ---
-    cout << " ---Ìõ¿î41£ºÀí½âptr_fun £¬mem_fun £¬ºÍmem_fun_refµÄÓÉÀ´ ---\n";
+//---æ¡æ¬¾41ï¼šç†è§£ptr_fun ï¼Œmem_fun ï¼Œå’Œmem_fun_refçš„ç”±æ¥ ---
+    cout << " ---æ¡æ¬¾41ï¼šç†è§£ptr_fun ï¼Œmem_fun ï¼Œå’Œmem_fun_refçš„ç”±æ¥ ---\n";
 
 //---------------------------------------------------------------------------
-//---Ìõ¿î42£ºÈ·±£less<T> Óëoperator< ¾ßÓĞÏàÍ¬µÄÓïÒå ---
-    cout << " ---Ìõ¿î42£ºÈ·±£less<T> Óëoperator< ¾ßÓĞÏàÍ¬µÄÓïÒå ---  \n";
+//---æ¡æ¬¾42ï¼šç¡®ä¿less<T> ä¸operator< å…·æœ‰ç›¸åŒçš„è¯­ä¹‰ ---
+    cout << " ---æ¡æ¬¾42ï¼šç¡®ä¿less<T> ä¸operator< å…·æœ‰ç›¸åŒçš„è¯­ä¹‰ ---  \n";
 
 
 //---------------------------------------------------------------------------
-//---Ìõ¿î43£ºËã·¨µ÷ÓÃÓÅÏÈÓÚÊÖĞ´Ëã·¨  ---
+//---æ¡æ¬¾43ï¼šç®—æ³•è°ƒç”¨ä¼˜å…ˆäºæ‰‹å†™ç®—æ³•  ---
     {
-    cout << " ---Ìõ¿î43£ºËã·¨µ÷ÓÃÓÅÏÈÓÚÊÖĞ´Ëã·¨  ---\n";
+    cout << " ---æ¡æ¬¾43ï¼šç®—æ³•è°ƒç”¨ä¼˜å…ˆäºæ‰‹å†™ç®—æ³•  ---\n";
     list<Widget>    lw(10 ,Widget());
-    // for Ñ­»· ----
-    cout << " for Ñ­»· ----\n";
+    // for å¾ªç¯ ----
+    cout << " for å¾ªç¯ ----\n";
     for(list<Widget>::iterator it = lw.begin();it!=lw.end();++it)
         it->reDraw();
-    // Ëã·¨ for_each ----
-    cout << " Ëã·¨ for_each ----\n";
+    // ç®—æ³• for_each ----
+    cout << " ç®—æ³• for_each ----\n";
     for_each(lw.begin() ,lw.end(),mem_fun_ref(&Widget::reDraw) );
 
     double  dData[] = { 1 ,2 ,3 ,4 ,5 ,6 ,7, 8 ,9 ,10 };
     const int   NUM = sizeof(dData)/sizeof(double);
     deque<double>   dDeq; // (dData ,dData+NUM);
-    cout << " for Ñ­»· ----\n";
+    cout << " for å¾ªç¯ ----\n";
     deque<double>::iterator insertIter = dDeq.begin();
     for(size_t i =0;i<NUM;++i)
     {
@@ -767,15 +767,15 @@
     copy(dDeq.begin() ,dDeq.end() ,ostream_iterator<double>(cout ," ") );
     cout << " \n";
     dDeq.clear();
-    cout << " Ëã·¨ transform() ----\n";
+    cout << " ç®—æ³• transform() ----\n";
     transform(dData ,dData+NUM ,back_inserter(dDeq) ,bind2nd(plus<double>() ,99) );
     copy(dDeq.begin() ,dDeq.end() ,ostream_iterator<double>(cout ," ") );
     cout << " \n";
-// ... Ëã·¨µÄÃû³Æ±ÈÆÕÍ¨µÄÑ­»·¸üÓĞÒâÒå£¬µ«ÊÇ£¬Òª±íÃ÷ÔÚÒ»´Îµü´úÖĞÍê³ÉÊ²Ã´¹¤×÷ £¬
-//     ÔòÊ¹ÓÃÑ­»·±ÈÆğËã·¨¸üÎªÇåÎú -----
+// ... ç®—æ³•çš„åç§°æ¯”æ™®é€šçš„å¾ªç¯æ›´æœ‰æ„ä¹‰ï¼Œä½†æ˜¯ï¼Œè¦è¡¨æ˜åœ¨ä¸€æ¬¡è¿­ä»£ä¸­å®Œæˆä»€ä¹ˆå·¥ä½œ ï¼Œ
+//     åˆ™ä½¿ç”¨å¾ªç¯æ¯”èµ·ç®—æ³•æ›´ä¸ºæ¸…æ™° -----
     vector<int> iVec(dData ,dData+NUM);
     vector<int>::iterator it = iVec.begin();
-    cout << " Ñ­»·²éÕÒ ----- for(...) \n";
+    cout << " å¾ªç¯æŸ¥æ‰¾ ----- for(...) \n";
     for(;it!=iVec.end();it++)
         if(*it>5 && *it<8)
             break;
@@ -784,7 +784,7 @@
     else          
         cout << " Not find *it>5 && *it<8 ";
     cout << "\n";      
-    cout << " 1 . Ëã·¨²éÕÒ ----- find_if(...) \n";
+    cout << " 1 . ç®—æ³•æŸ¥æ‰¾ ----- find_if(...) \n";
     it = find_if(iVec.begin() ,iVec.end() ,
                  compose2(logical_and<bool>() ,
                           bind2nd(greater<int>() ,5) ,
@@ -794,7 +794,7 @@
     else
         cout << " Not find *it>5 && *it<8 ";
     cout << "\n";
-    cout << " 2 . Ëã·¨²éÕÒ ----- find_if(...) \n";
+    cout << " 2 . ç®—æ³•æŸ¥æ‰¾ ----- find_if(...) \n";
     it = find_if(iVec.begin() ,iVec.end() ,betweenValues<int>(5 ,8) );
     if(it!=iVec.end())
         cout << " find *it>5 && *it<8 : *it = " << *it;
@@ -805,9 +805,9 @@
 
     }
 //---------------------------------------------------------------------------
-//---Ìõ¿î44£ºÈİÆ÷µÄ³ÉÔ±º¯ÊıÓÅÏÈÓÚÍ¬ÃûµÄËã·¨ ----
+//---æ¡æ¬¾44ï¼šå®¹å™¨çš„æˆå‘˜å‡½æ•°ä¼˜å…ˆäºåŒåçš„ç®—æ³• ----
     {
-    cout << " ---Ìõ¿î44£ºÈİÆ÷µÄ³ÉÔ±º¯ÊıÓÅÏÈÓÚÍ¬ÃûµÄËã·¨  ---\n";
+    cout << " ---æ¡æ¬¾44ï¼šå®¹å™¨çš„æˆå‘˜å‡½æ•°ä¼˜å…ˆäºåŒåçš„ç®—æ³•  ---\n";
     set<int>    iSet;
     for(int i=0;i<20;i++)
         iSet.insert( rand()%100);
@@ -816,13 +816,13 @@
     cout << " \n";
     int     findValue = *(--iSet.end());
     cout << " findValue : " << findValue << "\n";
-    cout << " ³ÉÔ±º¯Êı set<T>::find() --- good ---\n";
+    cout << " æˆå‘˜å‡½æ•° set<T>::find() --- good ---\n";
     set<int>::iterator it = iSet.find(findValue);
     if(it!=iSet.end())
         cout << " find findValue: " << *(iSet.find(findValue)) << "\n";
     else
         cout << " not find findValue \n";
-    cout << " Ëã·¨ find() --- bad ----\n";
+    cout << " ç®—æ³• find() --- bad ----\n";
     it = find(iSet.begin() ,iSet.end() ,findValue);
     if(it!=iSet.end())
         cout << " find findValue: " << *(find(iSet.begin() ,iSet.end() ,findValue)) << "\n";
@@ -831,9 +831,9 @@
 
     }
 //---------------------------------------------------------------------------
-//---Ìõ¿î45£ºÕıÈ·Çø·Ö count ,find ,binary_search ,lower_bound ,upper_bound ºÍequal_range ----
+//---æ¡æ¬¾45ï¼šæ­£ç¡®åŒºåˆ† count ,find ,binary_search ,lower_bound ,upper_bound å’Œequal_range ----
     { //
-    cout << " ---Ìõ¿î45£ºÕıÈ·Çø·Ö count ,find ,binary_search ,lower_bound ,upper_bound ºÍequal_range ---\n";
+    cout << " ---æ¡æ¬¾45ï¼šæ­£ç¡®åŒºåˆ† count ,find ,binary_search ,lower_bound ,upper_bound å’Œequal_range ---\n";
 
     int  iData[] = { 1 ,2 ,2 ,3 ,3 ,3 ,4 ,5 ,6 ,7, 8 ,8 ,8 ,9 ,9 ,10 };
     const int   NUM = sizeof(iData)/sizeof(int);
@@ -859,14 +859,14 @@
     }
     cout << " distance(iPtrPair.first,iPtrPair.second) = "
          << distance(iPtrPair.first,iPtrPair.second) << "\n";
-// ¶ÔÓÚ¹ØÁªÈİÆ÷£ºset ,map ,multiset ,multimap Ê¹ÓÃÆä³ÉÔ±º¯Êı
-// :: cout ,find ,lower_bound ,upper_bound ºÍequal_range  ....
+// å¯¹äºå…³è”å®¹å™¨ï¼šset ,map ,multiset ,multimap ä½¿ç”¨å…¶æˆå‘˜å‡½æ•°
+// :: cout ,find ,lower_bound ,upper_bound å’Œequal_range  ....
 
     }
 //---------------------------------------------------------------------------
-//---Ìõ¿î46£º¿¼ÂÇÊµÑéº¯Êı¶ÔÏó¶ø²»ÊÇº¯Êı×÷Îª STLËã·¨µÄ²ÎÊı ----
+//---æ¡æ¬¾46ï¼šè€ƒè™‘å®éªŒå‡½æ•°å¯¹è±¡è€Œä¸æ˜¯å‡½æ•°ä½œä¸º STLç®—æ³•çš„å‚æ•° ----
     {
-    cout << " ---Ìõ¿î46£º¿¼ÂÇÊµÑéº¯Êı¶ÔÏó¶ø²»ÊÇº¯Êı×÷Îª STLËã·¨µÄ²ÎÊı ----\n"; 
+    cout << " ---æ¡æ¬¾46ï¼šè€ƒè™‘å®éªŒå‡½æ•°å¯¹è±¡è€Œä¸æ˜¯å‡½æ•°ä½œä¸º STLç®—æ³•çš„å‚æ•° ----\n"; 
     // --- sort(dVec.begin() ,dVec.end() ,greater<double>() ); ---
     ofstream    fout("doubleData.txt");
     for(int i=0;i<10000;i++)
@@ -911,20 +911,20 @@
     cout << " \n";
     }
 //---------------------------------------------------------------------------
-//---Ìõ¿î47£º±ÜÃâ²úÉú¡°Ö±Ğ´ĞÍ¡±£¨write-only£©µÄ´úÂë ----
+//---æ¡æ¬¾47ï¼šé¿å…äº§ç”Ÿâ€œç›´å†™å‹â€ï¼ˆwrite-onlyï¼‰çš„ä»£ç  ----
     {
-    cout << " ---Ìõ¿î47£º±ÜÃâ²úÉú¡°Ö±Ğ´ĞÍ¡±£¨write-only£©µÄ´úÂë ----\n";
+    cout << " ---æ¡æ¬¾47ï¼šé¿å…äº§ç”Ÿâ€œç›´å†™å‹â€ï¼ˆwrite-onlyï¼‰çš„ä»£ç  ----\n";
     int  iData[] = { 1 ,10 ,2 ,9 ,8 ,8 ,9 ,8 ,3 ,4 ,5 ,6 ,2 ,3 ,3 ,7 };
     const int   NUM = sizeof(iData)/sizeof(int);
-    // É¾³ıiVecÖĞËùÓĞÆäÖµĞ¡ÓÚ XµÄÔªËØ£¬µ«ÔÚ×îºóÒ»¸öÆäÖµ²»Ğ¡ÓÚyµÄÔªËØÖ®Ç°µÄËùÓĞ
-    // ÔªËØ¶¼Ó¦¸Ã±£ÁôÏÂÀ´ ----
+    // åˆ é™¤iVecä¸­æ‰€æœ‰å…¶å€¼å°äº Xçš„å…ƒç´ ï¼Œä½†åœ¨æœ€åä¸€ä¸ªå…¶å€¼ä¸å°äºyçš„å…ƒç´ ä¹‹å‰çš„æ‰€æœ‰
+    // å…ƒç´ éƒ½åº”è¯¥ä¿ç•™ä¸‹æ¥ ----
     vector<int> iVec(iData ,iData+NUM);
     cout << " iVec .... print :\n";
     copy(iVec.begin() ,iVec.end() ,ostream_iterator<int>(cout ," ") );
     cout << " \n";
     int     x = 4 ,y = 8;
-    cout << " É¾³ıiVecÖĞËùÓĞÆäÖµĞ¡ÓÚ 4µÄÔªËØ£¬µ«ÔÚ×îºóÒ»¸öÆäÖµ²»Ğ¡ÓÚ8µÄÔªËØÖ®Ç°µÄ\n"
-         << " ËùÓĞÔªËØ¶¼Ó¦¸Ã±£ÁôÏÂÀ´ ---- \n";
+    cout << " åˆ é™¤iVecä¸­æ‰€æœ‰å…¶å€¼å°äº 4çš„å…ƒç´ ï¼Œä½†åœ¨æœ€åä¸€ä¸ªå…¶å€¼ä¸å°äº8çš„å…ƒç´ ä¹‹å‰çš„\n"
+         << " æ‰€æœ‰å…ƒç´ éƒ½åº”è¯¥ä¿ç•™ä¸‹æ¥ ---- \n";
     // --- write-only ,badlly ----
     cout << " --- write-only ,badlly ----\n";
     iVec.erase( remove_if(find_if(iVec.rbegin() ,iVec.rend() ,
@@ -951,19 +951,19 @@
 
     }
 
-//---Ìõ¿î48£º×ÜÊÇ°üº¬£¨#include£©ÕıÈ·µÄÍ·ÎÄ¼ş ----
+//---æ¡æ¬¾48ï¼šæ€»æ˜¯åŒ…å«ï¼ˆ#includeï¼‰æ­£ç¡®çš„å¤´æ–‡ä»¶ ----
     {
-    cout << " ---Ìõ¿î48£º×ÜÊÇ°üº¬£¨#include£©ÕıÈ·µÄÍ·ÎÄ¼ş ----\n";
+    cout << " ---æ¡æ¬¾48ï¼šæ€»æ˜¯åŒ…å«ï¼ˆ#includeï¼‰æ­£ç¡®çš„å¤´æ–‡ä»¶ ----\n";
     }
 
-//---Ìõ¿î49£ºÑ§»á·ÖÎöÓëSTLÏà¹ØµÄ±àÒëÆ÷Õï¶ÏĞÅÏ¢ ----
+//---æ¡æ¬¾49ï¼šå­¦ä¼šåˆ†æä¸STLç›¸å…³çš„ç¼–è¯‘å™¨è¯Šæ–­ä¿¡æ¯ ----
     {
-    cout << " ---Ìõ¿î49£ºÑ§»á·ÖÎöÓëSTLÏà¹ØµÄ±àÒëÆ÷Õï¶ÏĞÅÏ¢ ---\n";
+    cout << " ---æ¡æ¬¾49ï¼šå­¦ä¼šåˆ†æä¸STLç›¸å…³çš„ç¼–è¯‘å™¨è¯Šæ–­ä¿¡æ¯ ---\n";
     }
 
-//---Ìõ¿î50£ºÊìÏ¤ÓëSTL Ïà¹ØµÄWebÕ¾µã ----
+//---æ¡æ¬¾50ï¼šç†Ÿæ‚‰ä¸STL ç›¸å…³çš„Webç«™ç‚¹ ----
     {
-    cout << " ---Ìõ¿î50£ºÊìÏ¤ÓëSTL Ïà¹ØµÄWebÕ¾µã ----\n";
+    cout << " ---æ¡æ¬¾50ï¼šç†Ÿæ‚‰ä¸STL ç›¸å…³çš„Webç«™ç‚¹ ----\n";
     }
 
 //---------------------------------------------------------------------------

@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1326190812 source:e:\github\for-effective-stl\main.cpp
+1326353682 source:e:\github\for-effective-stl\main.cpp
 	"stdafx.h"
 	"main.h"
 	"../project-tool/win_sync_func.h"
+	"../project-tool/win_file.h"
 
 1326100706 e:\github\for-effective-stl\stdafx.h
 	<conio.h>
@@ -28,7 +29,7 @@
 	<windows.h>
 	"../project-tool/c_single_file.h"
 
-1326189637 e:\github\for-effective-stl\main.h
+1326195169 e:\github\for-effective-stl\main.h
 	"stdafx.h"
 	"../project-tool/win_thread_class.h"
 	"../project-tool/win_sync_func.h"
@@ -98,7 +99,7 @@
 	<cstdio>
 	"win32_sync_func.h"
 
-1326186108 e:\github\project-tool\win32_sync_func.h
+1326343303 e:\github\project-tool\win32_sync_func.h
 	<iostream>
 	<limits.h>
 	<windows.h>
@@ -126,5 +127,15 @@
 	<iostream>
 	<limits.h>
 	<windows.h>
+	"c_single_file.h"
+
+1326353581 source:e:\github\project-tool\win_file.cpp
+	"limits.h"
+	"win_file.h"
+	<stdexcept>
+
+1326352502 e:\github\project-tool\win_file.h
+	<string>
+	<Windows.h>
 	"c_single_file.h"
 

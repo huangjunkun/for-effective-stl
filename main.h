@@ -1,4 +1,4 @@
-#ifndef MAIN_H_INCLUDED
+ï»¿#ifndef MAIN_H_INCLUDED
 #define MAIN_H_INCLUDED
 
 #pragma once
@@ -10,15 +10,15 @@ using namespace std;
 using namespace test_namespace;
 
 
-static junkun::mutex s_mxPrintContainer;//ÁÙ½çÇø
-static junkun::critical_section s_csPrintContainer;//ÖØÒªÇø¶Î -----
+static junkun::mutex s_mxPrintContainer;//ä¸´ç•ŒåŒº
+static junkun::critical_section s_csPrintContainer;//é‡è¦åŒºæ®µ -----
 
-//---Ìõ¿î12£ºÇĞÎğ¶Ô STL ÈİÆ÷µÄÏß³Ì°²È«ĞÔÓĞ²»ÇÒÊµ¼ÊµÄÒÀÀµ -------------------
+//---æ¡æ¬¾12ï¼šåˆ‡å‹¿å¯¹ STL å®¹å™¨çš„çº¿ç¨‹å®‰å…¨æ€§æœ‰ä¸ä¸”å®é™…çš„ä¾èµ– -------------------
 #define LOCKNAME    "LockName"
 template <typename Container >
 class LockContainer
 {
-    // Òì³£ £¬ÒàÎö¹¹¾Ö²¿¶ÔÏó£¬¼´~LockContainer() ---½¡×³ĞÔ ---
+    // å¼‚å¸¸ ï¼Œäº¦ææ„å±€éƒ¨å¯¹è±¡ï¼Œå³~LockContainer() ---å¥å£®æ€§ ---
 private:
     HANDLE  hMutex;
     const Container&   c;
@@ -110,7 +110,7 @@ public:
     __fastcall TTestThread(bool CreateSuspended, const Container& container, int Num)
         : TThread(CreateSuspended), c(container), ThreadNum(Num)    //
     {
-        //this->FreeOnTerminate = true; //Ïß³Ì½áÊøÊ±×Ô¶¯É¾³ı
+        //this->FreeOnTerminate = true; //çº¿ç¨‹ç»“æŸæ—¶è‡ªåŠ¨åˆ é™¤
     }
     //template< typename Container>
     //friend void PrintContainer(const Container& c);
@@ -118,7 +118,7 @@ public:
 
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
-//---Ìõ¿î7£ºÈç¹ûÈİÆ÷°üº¬ÁËÍ¨¹ınew ²Ù×÷´´½¨Ö¸Õë£¬ÇĞ¼ÇÔÚÈİÆ÷¶ÔÏóÎö¹¹Ç°½«Ö¸Õëdeleteµô -----
+//---æ¡æ¬¾7ï¼šå¦‚æœå®¹å™¨åŒ…å«äº†é€šè¿‡new æ“ä½œåˆ›å»ºæŒ‡é’ˆï¼Œåˆ‡è®°åœ¨å®¹å™¨å¯¹è±¡ææ„å‰å°†æŒ‡é’ˆdeleteæ‰ -----
 
 typedef struct DeletePtr
 {
@@ -130,7 +130,7 @@ typedef struct DeletePtr
         return  ptr;
     }
 } DeletePtr;
-//---Ìõ¿î8£ºÇĞÎğ´´½¨°üº¬auto_ptrµÄÈİÆ÷¶ÔÏó --------------
+//---æ¡æ¬¾8ï¼šåˆ‡å‹¿åˆ›å»ºåŒ…å«auto_ptrçš„å®¹å™¨å¯¹è±¡ --------------
 //template <typename T >
 bool PtrToRefComp(const auto_ptr<int>& lhs, const auto_ptr<int>& rhs)
 {
@@ -148,7 +148,7 @@ struct APtrToRefPtint //typedef
 };   // PtrToRefPtint
 
 //---------------------------------------------------------------------------
-//---Ìõ¿î10£ºÁË½â·ÖÅä×Ó(allocator)µÄÔ¼¶¨ºÍÏŞÖÆ --------- 1 ~~~ 5 tips
+//---æ¡æ¬¾10ï¼šäº†è§£åˆ†é…å­(allocator)çš„çº¦å®šå’Œé™åˆ¶ --------- 1 ~~~ 5 tips
 template <typename T>  // --- 1
 class SpecialAllocator
 {
@@ -183,7 +183,7 @@ public:  // --- 3
         typedef SpecialAllocator<U> other;
     };
 };
-//---Ìõ¿î11£ºÀí½â×Ô¶¨Òå·ÖÅä×ÓµÄºÏÀíÓÃ·¨ ----------------
+//---æ¡æ¬¾11ï¼šç†è§£è‡ªå®šä¹‰åˆ†é…å­çš„åˆç†ç”¨æ³• ----------------
 void*   mallocShared(size_t byteNeeded);
 void*   freeShared(void*ptr);
 
@@ -207,7 +207,7 @@ public:
     }
 };
 //---------------------------------------------------------------------------
-//---Ìõ¿î9£ºÉ÷ÖØÑ¡ÔñÉ¾³ıÔªËØµÄ·½·¨ -----------------------
+//---æ¡æ¬¾9ï¼šæ…é‡é€‰æ‹©åˆ é™¤å…ƒç´ çš„æ–¹æ³• -----------------------
 template <int I>
 struct badValue : public unary_function<bool, int>
 {
@@ -366,7 +366,7 @@ void DelAndNULLifyUncertified(Widget*& pWidget)
     }
 }
 //---------------------------------------------------------------------------
-//---Ìõ¿î20£ºÎª°üº¬Ö¸ÕëµÄ¹ØÁªÈİÆ÷£¨ÒàÆäËûÈİÆ÷£©Ö¸¶¨±È½ÏÀàĞÍ £¡-----
+//---æ¡æ¬¾20ï¼šä¸ºåŒ…å«æŒ‡é’ˆçš„å…³è”å®¹å™¨ï¼ˆäº¦å…¶ä»–å®¹å™¨ï¼‰æŒ‡å®šæ¯”è¾ƒç±»å‹ ï¼-----
 typedef struct  DereferenceLess
 {
     template<typename PtrType>
@@ -375,7 +375,7 @@ typedef struct  DereferenceLess
         return  *pT1 < *pT2;
     }
 } DereferenceLess;
-//---Ìõ¿î22£ºÖ±½ÓÇĞÎğĞŞ¸Äset»òÊÇ multiset ÖĞµÄ¼üÖµ -----
+//---æ¡æ¬¾22ï¼šç›´æ¥åˆ‡å‹¿ä¿®æ”¹setæˆ–æ˜¯ multiset ä¸­çš„é”®å€¼ -----
 class Employee
 {
 public:
@@ -430,7 +430,7 @@ typedef struct IDLess :
     }
 } ID;
 typedef set<Employee, IDLess>   EmpIDSet;
-//---Ìõ¿î24£ºµ±Ğ§ÂÊÖÁ¹ØÖØÒªÊ±£¬ÇëÔÚmap::operator[] ºÍ map::insert Ö®¼ä½÷É÷×ö³öÑ¡Ôñ-------
+//---æ¡æ¬¾24ï¼šå½“æ•ˆç‡è‡³å…³é‡è¦æ—¶ï¼Œè¯·åœ¨map::operator[] å’Œ map::insert ä¹‹é—´è°¨æ…åšå‡ºé€‰æ‹©-------
 template<typename MapType, typename KeyArgType,
 typename ValueArgType >
 typename MapType::iterator
@@ -458,12 +458,12 @@ EfficientAddOrUpdate(MapType& m, const KeyArgType& k,
 
 //---------------------------------------------------------------------------
 
-//---Ìõ¿î30£ºÈ·±£Ä¿±êÇø¼ä×ã¹»´ó ----------------------
+//---æ¡æ¬¾30ï¼šç¡®ä¿ç›®æ ‡åŒºé—´è¶³å¤Ÿå¤§ ----------------------
 int transmogrify(const int& x)
 {
     return  x+1;
 }
-//---Ìõ¿î31£ºÁË½â¸÷ÖÖÓëÅÅĞòÓĞ¹ØµÄÑ¡Ôñ ----------------
+//---æ¡æ¬¾31ï¼šäº†è§£å„ç§ä¸æ’åºæœ‰å…³çš„é€‰æ‹© ----------------
 //class  -> [C++ Error] _algo.c(606): E2247 'PredIntTo50<int>::operator ()(const int &)' is not accessible
 template <typename T>
 struct PredIntTo50 : public unary_function<T, bool>
@@ -474,7 +474,7 @@ struct PredIntTo50 : public unary_function<T, bool>
     }
 
 };
-//---Ìõ¿î37£ºÊ¹ÓÃaccumulate »òÊÇ for_each ½øĞĞÇø¼äÍ³¼Æ ---
+//---æ¡æ¬¾37ï¼šä½¿ç”¨accumulate æˆ–æ˜¯ for_each è¿›è¡ŒåŒºé—´ç»Ÿè®¡ ---
 string::size_type
 stringLengthSum(string::size_type sumSoFar, const string& s)
 {
@@ -529,7 +529,7 @@ ostream& operator << (ostream& os, const dPoint& P)
     os << "(" << P.x << ", " << P.y << ") ";
     return  os;
 }
-//---Ìõ¿î35£ºÍ¨¹ı mismatch »ò lexicographical_compare ÊµÏÖ¼òµ¥µÄºöÂÔ´óĞ¡Ğ´
+//---æ¡æ¬¾35ï¼šé€šè¿‡ mismatch æˆ– lexicographical_compare å®ç°ç®€å•çš„å¿½ç•¥å¤§å°å†™
 // --- call mismatch ---- return -1 or 0 or 1 ---------------
 int ciCharCopare(char c1, char c2)
 {
@@ -542,7 +542,7 @@ int ciCharCopare(char c1, char c2)
 int ciStringCompareImpl(const string& s1, const string& s2);
 int ciStringCompare(const string& s1, const string& s2)
 {
-    // --- ±£Ö¤ºÏ·¨µ÷ÓÃSTLËã·¨£º mismatch£¨...£© -----
+    // --- ä¿è¯åˆæ³•è°ƒç”¨STLç®—æ³•ï¼š mismatchï¼ˆ...ï¼‰ -----
     if(s1.size()<=s2.size())
         return  ciStringCompareImpl(s1, s2);
     else
@@ -574,11 +574,11 @@ bool ciStringCompare_(const string& s1, const string& s2)
                                    ciCharLess );
 }
 
-//---Ìõ¿î36£ºÀí½âcopy_if Ëã·¨µÄÕıÈ·ÊµÏÖ £¬STLÃ»ÓĞ°üº¬copy_ifµÄÊµÏÖ--------------
+//---æ¡æ¬¾36ï¼šç†è§£copy_if ç®—æ³•çš„æ­£ç¡®å®ç° ï¼ŒSTLæ²¡æœ‰åŒ…å«copy_ifçš„å®ç°--------------
 template <typename InputIterator,
 typename OutputIterator,
 typename Predicate >
-// ------ OK call STL Ëã·¨remove_copy_if(...)----------
+// ------ OK call STL ç®—æ³•remove_copy_if(...)----------
 OutputIterator copy_if_(InputIterator first, InputIterator last,
                         OutputIterator destFirst, Predicate Pre)
 {
@@ -600,17 +600,17 @@ OutputIterator copy_if(InputIterator first, InputIterator last,
 }
 //---------------------------------------------------------------------------
 
-//---Ìõ¿î38£º×ñÑ­°´Öµ´«µİµÄÔ­ÔòÉè¼Æº¯Êı×ÓÀà ----
-// --- ÒÔÏÂ·½·¨£º¼ÈÔÊĞíº¯Êı¶ÔÏó¿ÉÒÔºÜ´ó²¢ÇÒ/»òÕß±£Áô¶àÌ¬ĞÔ£¬
-// ---- ÓĞ¿ÉÒÔÓëSTL Ëù²ÉÓÃµÄ´«Öµ´«µİº¯Êı×ÓµÄÏ°¹ß±£³ÖÒ»ÖÂ
-// ---- ¡°ÓãÓëĞÜÕÆ¼æµÃ¡± ---½÷É÷´¦ÀíBPFCµÄ¿½±´¹¹Ôìº¯Êı ----
+//---æ¡æ¬¾38ï¼šéµå¾ªæŒ‰å€¼ä¼ é€’çš„åŸåˆ™è®¾è®¡å‡½æ•°å­ç±» ----
+// --- ä»¥ä¸‹æ–¹æ³•ï¼šæ—¢å…è®¸å‡½æ•°å¯¹è±¡å¯ä»¥å¾ˆå¤§å¹¶ä¸”/æˆ–è€…ä¿ç•™å¤šæ€æ€§ï¼Œ
+// ---- æœ‰å¯ä»¥ä¸STL æ‰€é‡‡ç”¨çš„ä¼ å€¼ä¼ é€’å‡½æ•°å­çš„ä¹ æƒ¯ä¿æŒä¸€è‡´
+// ---- â€œé±¼ä¸ç†ŠæŒå…¼å¾—â€ ---è°¨æ…å¤„ç†BPFCçš„æ‹·è´æ„é€ å‡½æ•° ----
 class Widget2
 {
-    // ----  ¾ßÌåÄÚÈİÂÔ --------
+    // ----  å…·ä½“å†…å®¹ç•¥ --------
 };
 /*  */
 template <typename T>
-class GoodFunctor; // Ä£°åÀà BPFC ÉùÃ÷ ---
+class GoodFunctor; // æ¨¡æ¿ç±» BPFC å£°æ˜ ---
 // BPFC = "Big Polymorphic Functor Class "
 
 template <typename T>
@@ -677,7 +677,7 @@ public:
         pImpl->operator()(val);
     }
 };
-//---Ìõ¿î39£ºÈ·±£ÅĞ±ğÊ½ÊÇ¡°´¿º¯Êı¡± ---
+//---æ¡æ¬¾39ï¼šç¡®ä¿åˆ¤åˆ«å¼æ˜¯â€œçº¯å‡½æ•°â€ ---
 // ---  BadPredicate
 template <typename T>
 class BadPredicate : public unary_function<T, bool>
@@ -693,7 +693,7 @@ private:
     size_t timesCalled;  // int  timesCalled;
 };
 //---------------------------------------------------------------------------
-//---Ìõ¿î43£ºËã·¨µ÷ÓÃÓÅÏÈÓÚÊÖĞ´Ëã·¨  ---
+//---æ¡æ¬¾43ï¼šç®—æ³•è°ƒç”¨ä¼˜å…ˆäºæ‰‹å†™ç®—æ³•  ---
 class Widget3
 {
 public:
@@ -725,7 +725,7 @@ public:
 };
 
 //---------------------------------------------------------------------------
-//---Ìõ¿î46£º¿¼ÂÇÊµÑéº¯Êı¶ÔÏó¶ø²»ÊÇº¯Êı×÷Îª STLËã·¨µÄ²ÎÊı ----
+//---æ¡æ¬¾46ï¼šè€ƒè™‘å®éªŒå‡½æ•°å¯¹è±¡è€Œä¸æ˜¯å‡½æ•°ä½œä¸º STLç®—æ³•çš„å‚æ•° ----
 inline bool doubleGreater(double d1, double d2)
 {
     return  d1 > d2;
